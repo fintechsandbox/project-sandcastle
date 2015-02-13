@@ -1,0 +1,29 @@
+CREATE TABLE object_master (
+  id UUID PRIMARY KEY
+  , external_id_1
+);
+
+CREATE TABLE groupings (
+  object_id UUID REFERENCES object_master (id)
+  , grouping TEXT 
+  , UNIQUE (object_id, grouping)
+);
+
+CREATE TABLE providers (
+  name TEXT PRIMARY KEY
+  , contact_email TEXT
+);
+
+CREATE TABLE data_sets (
+  provider_name TEXT REFERENCES providers (name)
+  , data_series_name TEXT 
+  , license TEXT
+  , ingest_script TEXT
+);
+
+-- create by some ingest script
+CREATE TABLE data_series_1 (
+  object_id UUID REFERENCES object_master (id)
+  , ts TIMESTAMP 
+  , value NUMERIC
+);
