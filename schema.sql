@@ -15,8 +15,8 @@ CREATE TABLE providers (
 );
 
 CREATE TABLE data_sets (
-  provider_name TEXT REFERENCES providers (name)
-  , data_series_name TEXT 
+  data_series_name TEXT PRIMARY KEY
+  , provider_name TEXT REFERENCES providers (name)
   , license TEXT
   , ingest_script TEXT
 );
