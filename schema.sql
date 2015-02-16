@@ -3,12 +3,6 @@ CREATE TABLE object_master (
   , external_id_1
 );
 
-CREATE TABLE groupings (
-  object_id UUID REFERENCES object_master (id)
-  , grouping TEXT 
-  , UNIQUE (object_id, grouping)
-);
-
 CREATE TABLE providers (
   name TEXT PRIMARY KEY
   , contact_email TEXT
@@ -25,5 +19,7 @@ CREATE TABLE data_sets (
 CREATE TABLE data_series_1 (
   object_id UUID REFERENCES object_master (id)
   , ts TIMESTAMP 
-  , value NUMERIC
+  , value0 NUMERIC
+  , value1 TEXT
+  , ..
 );
