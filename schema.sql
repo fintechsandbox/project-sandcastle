@@ -1,5 +1,5 @@
 CREATE TABLE object_master (
-  id UUID PRIMARY KEY
+  oid UUID PRIMARY KEY
   , external_id_0 TEXT
   , external_id_1 TEXT
   , .. 
@@ -19,7 +19,7 @@ CREATE TABLE data_sets (
 
 -- create by some ingest script
 CREATE TABLE data_series_1 (
-  object_id UUID REFERENCES object_master (id)
+  oid UUID REFERENCES object_master (oid)
   , ts TIMESTAMP 
   , value0 NUMERIC
   , value1 TEXT
