@@ -35,11 +35,11 @@ Utilizing the schema described in https://github.com/elsen-trading/dumptruck/blo
 ```
 we want to be able to produce a query like:
 ```
-SELECT sp900.sid, DATE_TRUNC('day', sp900.ts), alexandria.sentiment, alexandria.confidence, currentprice.val
+SELECT sp900.oid, DATE_TRUNC('day', sp900.ts), alexandria.sentiment, alexandria.confidence, currentprice.val
 FROM sp900
-INNER JOIN alexandria ON sp900.sid = alexandria.sid 
+INNER JOIN alexandria ON sp900.oid = alexandria.oid 
   AND DATE_TRUNC('day', sp900.ts) = DATE_TRUNC('day', alexandria.ts) 
-INNER JOIN currentprice ON sp900.sid = currentprice.sid 
+INNER JOIN currentprice ON sp900.oid = currentprice.oid 
   AND DATE_TRUNC('day', sp900.ts) = DATE_TRUNC('day', currentprice.ts) 
 WHERE sp900.val BETWEEN 1 AND 1
 AND sp900.ts BETWEEN '2008-01-01'::TIMESTAMP AND '2009-01-01'::TIMESTAMP
