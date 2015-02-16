@@ -1,6 +1,8 @@
 CREATE TABLE object_master (
   id UUID PRIMARY KEY
-  , external_id_1
+  , external_id_0 TEXT
+  , external_id_1 TEXT
+  , .. 
 );
 
 CREATE TABLE providers (
