@@ -16,3 +16,35 @@ Git tracked security master and ingest scripts for a variety of financial data p
 - S&P
 - Interactive Data
 - Alexandria
+
+## Data Series Design
+
+Utilizing the schema described in https://github.com/elsen-trading/dumptruck/blob/master/schema.sql and a specification of data series like:
+```
+{ "name": "sp900", "granularity": "day", "fields": [ 
+      { "name": "val", "min": 1, "max": 1 }
+    , { "name": "ts", "min": "2008-01-01", "max": "2009-01-01" }
+]}
+{ "name": "alexandria", "granularity": "day", "fields": [ 
+    { "name": "sentiment", "min": 0, "max": 1 }
+  , { "name": "confidence", "min": 0.75, "max": 1 }
+]}
+{ "name": "currentprice", "granularity": "day", "fields": [ 
+    { "name": "val", "min": 0, "max": 1 }
+]}
+```
+we want to be able to produce a query like:
+```
+SELECT sp900.sid, DATE_TRUNC('day', sp900.ts), alexandria.sentiment, alexandria.confidence, currentprice.val
+FROM sp900
+INNER JOIN alexandria ON sp900.sid = alexandria.sid 
+  AND DATE_TRUNC('day', sp900.ts) = DATE_TRUNC('day', alexandria.ts) 
+INNER JOIN currentprice ON sp900.sid = currentprice.sid 
+  AND DATE_TRUNC('day', sp900.ts) = DATE_TRUNC('day', currentprice.ts) 
+WHERE sp900.val BETWEEN 1 AND 1
+AND sp900.ts BETWEEN '2008-01-01'::TIMESTAMP AND '2009-01-01'::TIMESTAMP
+AND alexandria.sentiment BETWEEN 0 AND 1
+AND alexandria.confidence BETWEEN 0.75 AND 1
+AND currentprice.val BETWEEN 0 AND 1;
+```
+which is equivalent to the sentiment, confidence, and currentprice values for each sid in the S&P900 from 2008-01-01 through 2009-01-01. 
