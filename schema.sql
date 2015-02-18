@@ -9,6 +9,7 @@ CREATE TABLE providers (
   name TEXT PRIMARY KEY
   , contact_email TEXT
   , description TEXT
+  , ..
 );
 
 CREATE TABLE data_sets (
@@ -19,6 +20,7 @@ CREATE TABLE data_sets (
   , ingest_script TEXT
   , duplicate_of TEXT REFERENCES data_sets (data_series_name)
   , update_interval INTERVAL
+  , ..
 );
 
 -- create by some ingest script
