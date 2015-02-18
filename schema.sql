@@ -17,6 +17,7 @@ CREATE TABLE data_sets (
   , license TEXT
   , ingest_script TEXT
   , duplicate_of TEXT REFERENCES data_sets (data_series_name)
+  , update_interval INTERVAL
 );
 
 -- create by some ingest script
