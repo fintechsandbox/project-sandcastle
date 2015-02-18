@@ -16,7 +16,7 @@ CREATE TABLE data_sets (
   , source TEXT -- 2nd level description of where data came from
   , license TEXT
   , ingest_script TEXT
-  , duplicate_of TEXT -- points to a data_series_name
+  , duplicate_of TEXT REFERENCES data_sets (data_series_name)
 );
 
 -- create by some ingest script
