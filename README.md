@@ -50,6 +50,8 @@ INNER JOIN currentprice ON sp900.did = currentprice.did
   AND DATE_TRUNC('day', sp900.ts) = DATE_TRUNC('day', currentprice.ts) 
 WHERE sp900.val BETWEEN 1 AND 1
 AND sp900.ts BETWEEN '2008-01-01'::TIMESTAMP AND '2009-01-01'::TIMESTAMP
+AND alexandria.ts BETWEEN '2008-01-01'::TIMESTAMP AND '2009-01-01'::TIMESTAMP
+AND currentprice.ts BETWEEN '2008-01-01'::TIMESTAMP AND '2009-01-01'::TIMESTAMP
 AND alexandria.sentiment BETWEEN 0 AND 1
 AND alexandria.confidence BETWEEN 0.75 AND 1
 AND currentprice.val BETWEEN 0 AND 1;
