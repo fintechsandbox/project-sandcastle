@@ -56,4 +56,11 @@ AND alexandria.sentiment BETWEEN 0 AND 1
 AND alexandria.confidence BETWEEN 0.75 AND 1
 AND currentprice.val BETWEEN 0 AND 1;
 ```
-which is equivalent to the sentiment, confidence, and currentprice values for each did (data id) in the S&P900 from 2008-01-01 through 2009-01-01. 
+which is equivalent to the sentiment, confidence, and currentprice values for each did (data id) in the S&P900 from 2008-01-01 through 2009-01-01. This could be returned as a CSV where each row is 
+```
+did, ts, alexandira.sentiment, alexandria.confidence, currentprice.val
+f792f39e-75f9-41b9-afab-bf0a7f67183f, 2008-01-01 09:00, 1, 0.81, 14.32
+f792f39e-75f9-41b9-afab-bf0a7f67183f, 2008-01-01 09:01, 1, 0.68, 14.35
+b282f39e-75f9-41b9-afab-bf0a7391d83f, 2008-01-01 09:00, -1, 0.31, 23.78
+< more rows here >
+```
