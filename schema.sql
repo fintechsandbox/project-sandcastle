@@ -8,6 +8,7 @@ CREATE TABLE data_master (
 CREATE TABLE providers (
   name TEXT PRIMARY KEY
   , contact_email TEXT
+  , description TEXT
 );
 
 CREATE TABLE data_sets (
