@@ -21,17 +21,24 @@ Git tracked security master and ingest scripts for a variety of financial data p
 
 Utilizing the schema described in https://github.com/elsen-trading/dumptruck/blob/master/schema.sql and a specification of data series like:
 ```
-{ "name": "sp900", "granularity": "day", "fields": [ 
-      { "name": "val", "min": 1, "max": 1 }
-    , { "name": "ts", "min": "2008-01-01", "max": "2009-01-01" }
-]}
-{ "name": "alexandria", "granularity": "day", "fields": [ 
-    { "name": "sentiment", "min": 0, "max": 1 }
-  , { "name": "confidence", "min": 0.75, "max": 1 }
-]}
-{ "name": "currentprice", "granularity": "day", "fields": [ 
-    { "name": "val", "min": 0, "max": 1 }
-]}
+{ 
+      "granularity": "day"
+      , "start_date": "2008-01-01"
+      , "stop_date": "2009-01-01"
+      , "data_series": {
+
+            { "name": "sp900", "fields": [ 
+                  { "name": "val", "min": 1, "max": 1 }
+            ]}
+            , { "name": "alexandria", "fields": [ 
+                { "name": "sentiment", "min": 0, "max": 1 }
+              , { "name": "confidence", "min": 0.75, "max": 1 }
+            ]}
+            , { "name": "currentprice", "fields": [ 
+                { "name": "val", "min": 0, "max": 1 }
+            ]}
+      }
+}
 ```
 we want to be able to produce a query like:
 ```
