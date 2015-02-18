@@ -27,8 +27,8 @@ Utilizing the schema described in https://github.com/elsen-trading/dumptruck/blo
       , "stop_date": "2009-01-01"
       , "data_series": {
 
-            { "name": "sp900", "fields": [ 
-                  { "name": "val", "min": 1, "max": 1 }
+            { "name": "groupings", "fields": [ 
+                  { "name": "val", "equals": "SP900" }
             ]}
             , { "name": "alexandria", "fields": [ 
                 { "name": "sentiment", "min": 0, "max": 1 }
@@ -42,14 +42,14 @@ Utilizing the schema described in https://github.com/elsen-trading/dumptruck/blo
 ```
 we want to be able to produce a query like:
 ```
-SELECT sp900.did, DATE_TRUNC('day', sp900.ts), alexandria.sentiment, alexandria.confidence, currentprice.val
-FROM sp900
-INNER JOIN alexandria ON sp900.did = alexandria.did 
-  AND DATE_TRUNC('day', sp900.ts) = DATE_TRUNC('day', alexandria.ts) 
-INNER JOIN currentprice ON sp900.did = currentprice.did 
-  AND DATE_TRUNC('day', sp900.ts) = DATE_TRUNC('day', currentprice.ts) 
-WHERE sp900.val BETWEEN 1 AND 1
-AND sp900.ts BETWEEN '2008-01-01'::TIMESTAMP AND '2009-01-01'::TIMESTAMP
+SELECT groupings.did, DATE_TRUNC('day', groupings.ts), alexandria.sentiment, alexandria.confidence, currentprice.val
+FROM groupings
+INNER JOIN alexandria ON groupings.did = alexandria.did 
+  AND DATE_TRUNC('day', groupings.ts) = DATE_TRUNC('day', alexandria.ts) 
+INNER JOIN currentprice ON groupings.did = currentprice.did 
+  AND DATE_TRUNC('day', groupings.ts) = DATE_TRUNC('day', currentprice.ts) 
+WHERE groupings.val = 'SP900'
+AND groupings.ts BETWEEN '2008-01-01'::TIMESTAMP AND '2009-01-01'::TIMESTAMP
 AND alexandria.ts BETWEEN '2008-01-01'::TIMESTAMP AND '2009-01-01'::TIMESTAMP
 AND currentprice.ts BETWEEN '2008-01-01'::TIMESTAMP AND '2009-01-01'::TIMESTAMP
 AND alexandria.sentiment BETWEEN 0 AND 1
