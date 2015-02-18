@@ -5,16 +5,15 @@ CREATE TABLE data_master (
   , .. 
 );
 
-CREATE TABLE sources (
-  , id SERIAL
-  , name TEXT 
+CREATE TABLE providers (
+  name TEXT PRIMARY KEY
   , contact_email TEXT
-  , url TEXT 
 );
 
 CREATE TABLE data_sets (
   data_series_name TEXT PRIMARY KEY
-  , source INT REFERENCES sources (id)
+  , provider TEXT REFERENCES providers (name)
+  , source TEXT -- 2nd level description of where data came from
   , license TEXT
   , ingest_script TEXT
   , duplicate_of TEXT -- points to a data_series_name
