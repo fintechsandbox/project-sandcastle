@@ -1,10 +1,12 @@
+-- track all objects across all time series using this id
 CREATE TABLE data_master (
-  did UUID PRIMARY KEY
+  id SERIAL PRIMARY KEY
   , external_id_0 TEXT
   , external_id_1 TEXT
   , .. 
 );
 
+-- basic contact information for each data source provider
 CREATE TABLE providers (
   name TEXT PRIMARY KEY
   , contact_email TEXT
@@ -12,6 +14,7 @@ CREATE TABLE providers (
   , ..
 );
 
+-- basic information for each data series
 CREATE TABLE data_sets (
   data_series_name TEXT PRIMARY KEY
   , provider TEXT REFERENCES providers (name)
@@ -25,9 +28,7 @@ CREATE TABLE data_sets (
 
 -- create by some ingest script
 CREATE TABLE data_series_1 (
-  did UUID REFERENCES data_master (did)
-  , ts TIMESTAMP 
-  , value0 NUMERIC
-  , value1 TEXT
-  , ..
+  id INT REFERENCES data_master (id)
+  , ts TIMESTAMP WITHOUT TIME ZONE -- store all in UTC
+  , val ANY -- actual val will be typed
 );
