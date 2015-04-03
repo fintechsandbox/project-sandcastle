@@ -42,3 +42,12 @@ def execute(info, sql, args=None, return_columns=False):
 
             # return the column names with the data
             return tuple([desc[0] for desc in c.description]) + rows if return_columns else rows
+
+
+def executemany(info, sql, args=None):
+    """
+    General psycopg2 executemany routine
+    """
+    with psycopg2.connect(info) as con:
+        with con.cursor() as c:
+            c.executemany(sql, args)
