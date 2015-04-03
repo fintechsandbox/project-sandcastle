@@ -23,6 +23,7 @@ CREATE TABLE dumptruck.data_sets (
   , license TEXT
   , duplicate_of TEXT REFERENCES dumptruck.data_sets (name)
   , last_updated TIMESTAMP
+  , description TEXT
 );
 
 -- each series should look like this
