@@ -31,4 +31,5 @@ CREATE TABLE dumptruck.series_1 (
   id INT REFERENCES dumptruck.data_master (id)
   , ts TIMESTAMP WITHOUT TIME ZONE -- store all in UTC
   , val NUMERIC -- should be appropriate type for series
+  , UNIQUE(id, ts)
 );
