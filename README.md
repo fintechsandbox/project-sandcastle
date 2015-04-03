@@ -49,11 +49,11 @@ b5aa4745-1c3c-418b-b2f7-ad7bf3aa23f4, 2008-01-01 09:01, 24.29
 ```
 where the id (uuid in this example) is converted to a listed identifier in the data_master table. If there is not yet an identifier for this object, a new one should be generated with the relevant details added. Each of the three time series should be "checked in" to the data_sets table, allowing for universal discoverability. The final result would be a data layout like:
 ```
-# select * from dumptruck.data_master;
- id |            external_id_0             | external_id_1 
-----+--------------------------------------+---------------
-  1 | f792f39e-75f9-41b9-afab-bf0a7f67183f | 
-  2 | b5aa4745-1c3c-418b-b2f7-ad7bf3aa23f4 | 
+# select id, external_id_0 from dumptruck.data_master;
+ id |            external_id_0             
+----+--------------------------------------
+  1 | f792f39e-75f9-41b9-afab-bf0a7f67183f
+  2 | b5aa4745-1c3c-418b-b2f7-ad7bf3aa23f4
 
 # select name,description from dumptruck.data_sets;
          name          |                       description                        
