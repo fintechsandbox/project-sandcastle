@@ -21,13 +21,13 @@ CREATE TABLE dumptruck.data_sets (
   name TEXT PRIMARY KEY
   , source TEXT REFERENCES sources (name)
   , license TEXT
-  , duplicate_of TEXT REFERENCES data_sets (data_series_name)
+  , duplicate_of TEXT REFERENCES dumptruck.data_sets (name)
   , last_updated TIMESTAMP
 );
 
 -- each series should look like this
 CREATE TABLE dumptruck.series_1 (
-  id INT REFERENCES data_master (id)
+  id INT REFERENCES dumptruck.data_master (id)
   , ts TIMESTAMP WITHOUT TIME ZONE -- store all in UTC
   , val NUMERIC -- should be appropriate type for series
 );
