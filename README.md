@@ -92,6 +92,10 @@ where the id (uuid in this example) is converted to a listed identifier in the d
   2 | 2008-01-01 09:01:00 | 24.29
 ```
 
-## Ingest Requirements
+## Requirements
 - psycopg2 > 2.5 
 
+## Testing 
+```
+python test.py
+```

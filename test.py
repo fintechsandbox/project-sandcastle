@@ -68,6 +68,8 @@ class TestDB(unittest.TestCase):
     def test_execute(self):
         pass
     
+    def test_executemany(self):
+        pass
 
 if __name__ == '__main__':
     unittest.main()
