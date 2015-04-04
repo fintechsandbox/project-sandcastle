@@ -1,4 +1,4 @@
-# dumptruck
+# Project Sandcastle
 Git tracked security master and ingest scripts for a variety of financial data providers designed to facilitate financial data retrieval.
 
 ## Goals
