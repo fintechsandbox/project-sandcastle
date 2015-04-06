@@ -8,17 +8,14 @@ Data Providers
 
 Guide
 
-  Security Master
-	
-  Data Sources
-	
-  Data Series Design
+  * Security Master
+  * Data Sources
+  * Data Series Design
 	
 Appendix
 
-Provider Specific Ingest Scripts
-
-	Alexandria
+* Provider Specific Ingest Scripts
+  * Alexandria
 
 ##About Elsen Sandcastle
 
