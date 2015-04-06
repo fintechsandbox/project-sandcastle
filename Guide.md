@@ -1,14 +1,23 @@
 ##Table of Contents
 
 About Elsen Sandcastle
+
 Key Terms
+
 Data Providers
+
 Guide
+
 	Security Master
+	
 	Data Sources
+	
 	Data Series Design
+	
 Appendix
+
 Provider Specific Ingest Scripts
+
 	Alexandria
 
 ##About Elsen Sandcastle
