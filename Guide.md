@@ -25,13 +25,13 @@ Elsen Sandcastle is not a representation of Elsen’s internal database structur
 
 ##Key Terms
 
-Sandcastle – the overall collection of guides and scripts that demonstrate how to ingest and develop a database schema based on time series data
+*Sandcastle* – the overall collection of guides and scripts that demonstrate how to ingest and develop a database schema based on time series data
 
-FinTech Sandbox – a collection of partners that provides access to financial market data for financial technology startups to utilize in product development and testing
+*FinTech Sandbox* – a collection of partners that provides access to financial market data for financial technology startups to utilize in product development and testing
 
-Dumptruck – the name of the example database created by following Sandcastle. References to Dumptruck are specific for the database as outlined in the guide if followed exactly. 
+*Dumptruck* – the name of the example database created by following Sandcastle. References to Dumptruck are specific for the database as outlined in the guide if followed exactly. 
 
-Security master – a table with all important, necessary identifiers for financial securities that have data within Dumptruck
+*Security master* – a table with all important, necessary identifiers for financial securities that have data within Dumptruck
 
 ##Guide
 
