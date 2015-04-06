@@ -1,4 +1,4 @@
-##Table of Contents
+#Table of Contents
 
 About Elsen Sandcastle
 
@@ -17,13 +17,13 @@ Appendix
 * Provider Specific Ingest Scripts
   * Alexandria
 
-##About Elsen Sandcastle
+#About Elsen Sandcastle
 
 Elsen Sandcastle is a collection of guides and scripts that demonstrate how to ingest and develop a database schema that is based on time series data. The scripts are focused on data providers working with the FinTech Sandbox. Each data point, when available, is entered into its own table, with a timestamp when appropriate. It is important to note that Elsen Sandcastle is not meant to be the fastest or best performing database structure; rather, the Sandcastle intends to build a baseline for how data from the FinTech Sandbox can be entered and how it interacts between providers, with a special emphasis on creating a security master in order to identify the data properly.
 
 Elsen Sandcastle is not a representation of Elsen’s internal database structure; rather, it is a reflection of the thought process and experience from working with the FinTech Sandbox data providers.
 
-##Key Terms
+#Key Terms
 
 *Sandcastle* – the overall collection of guides and scripts that demonstrate how to ingest and develop a database schema based on time series data
 
@@ -33,7 +33,7 @@ Elsen Sandcastle is not a representation of Elsen’s internal database structur
 
 *Security master* – a table with all important, necessary identifiers for financial securities that have data within Dumptruck
 
-##Guide
+#Guide
 
 There are several main, crucial components to Dumptruck in order to successfully utilize the data from the FinTech Sandbox. These components are the security master, the source list, and the standard time series schema. The security master will allow information to be properly identified and classified (necessary in order to pull and use data within Dumptruck). The source list will help identify and verify which data providers are providing information (necessary for maintaining validity and reliability of the database, as well as for quickly sourcing and resolving data issues). The standard time series schema allows for all data to be entered in a uniform way (necessary for data visibility as well as querying into the database quickly). 
 
