@@ -8,11 +8,11 @@ Data Providers
 
 Guide
 
-	Security Master
+  Security Master
 	
-	Data Sources
+  Data Sources
 	
-	Data Series Design
+  Data Series Design
 	
 Appendix
 
