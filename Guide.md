@@ -24,7 +24,7 @@ Elsen Sandcastle is a collection of guides and scripts that demonstrate how to i
 Elsen Sandcastle is not a representation of Elsen’s internal database structure; rather, it is a reflection of the thought process and experience from working with the FinTech Sandbox data providers.
 
 ## Goals
-- Create a high quality security master in an easily parseable (csv?) format for ALL securities worldwide
+- Allow Sandcastle users to create a high quality security master in an easily parseable (csv?) format for ALL securities worldwide
 - Create/compile a set of easy-to-use (python?) scripts that will fetch data from the target providers and store them in a time series format (described in schema.sql)
 - Document core features of each data source (distribution license, contact info, overarching description of available data sets)
 
