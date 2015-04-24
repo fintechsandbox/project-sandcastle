@@ -53,8 +53,8 @@ where the id is converted to a listed identifier in the data_master table. If th
 
  id |            alexandria_id             
 ----+--------------------------------------
-  1 | 34
-  2 | 62
+  1 | 				34
+  2 | 				62
 
 # select name,description from dumptruck.data_sets;
 
