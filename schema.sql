@@ -3,8 +3,12 @@ CREATE SCHEMA dumptruck;
 -- track all objects across all time series using this id
 CREATE TABLE dumptruck.data_master (
   id SERIAL PRIMARY KEY
-  , external_id_0 TEXT
-  , external_id_1 TEXT
+  , display_name TEXT
+  , ric VARCHAR(7)
+  , sedol CHAR(7)
+  , cusip CHAR(9)
+  , isin CHAR(12)
+  , quantopian_id INT
 );
 
 -- basic contact information for each data source 
