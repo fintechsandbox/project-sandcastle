@@ -23,11 +23,12 @@ CREATE TABLE dumptruck.sources (
 -- basic information for each data series
 CREATE TABLE dumptruck.data_sets (
   name TEXT PRIMARY KEY
+  , description TEXT
+  , val_type TEXT -- see http://www.postgresql.org/docs/9.4/static/datatype.html
   , source TEXT REFERENCES sources (name)
   , license TEXT
   , duplicate_of TEXT REFERENCES dumptruck.data_sets (name)
   , last_updated TIMESTAMP
-  , description TEXT
 );
 
 -- each series should look like this

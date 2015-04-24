@@ -21,7 +21,7 @@ Git tracked security master and ingest scripts for a variety of financial data p
 
 For maintainability and ease of understanding, all data sets should be decomposed into single value time series. For example, a table such as 
 ```
-id, ts, alexandira.sentiment, alexandria.confidence, currentprice.val
+alexandria_id, ts, alexandira.sentiment, alexandria.confidence, currentprice.val
 34, 2008-01-01 09:00, 1, 0.81, 14.32
 34, 2008-01-01 09:01, 1, 0.68, 14.35
 62, 2008-01-01 09:00, -1, 0.31, 23.78
@@ -29,19 +29,19 @@ id, ts, alexandira.sentiment, alexandria.confidence, currentprice.val
 ```
 should be broken into three time series like
 ```
-id, ts, alexandira.sentiment
+alexandria_id, ts, alexandira.sentiment
 34, 2008-01-01 09:00, 1
 34, 2008-01-01 09:01, 1
 62, 2008-01-01 09:00, -1
 62, 2008-01-01 09:01, 0
 
-id, ts, alexandria.confidence
+alexandria_id, ts, alexandria.confidence
 34, 2008-01-01 09:00, 0.81
 34, 2008-01-01 09:01, 0.68
 62, 2008-01-01 09:00, 0.31
 62, 2008-01-01 09:01, 0.52
 
-id, ts, currentprice.val
+alexandria_id, ts, currentprice.val
 34, 2008-01-01 09:00, 14.32
 34, 2008-01-01 09:01, 14.35
 62, 2008-01-01 09:00, 23.78
@@ -51,10 +51,10 @@ where the id is converted to a listed identifier in the data_master table. If th
 ```
 # select id, display_name from dumptruck.data_master;
 
- id |            display_name             
+ id |            alexandria_id             
 ----+--------------------------------------
-  1 | Walmart
-  2 | Apple, Inc.
+  1 | 34
+  2 | 62
 
 # select name,description from dumptruck.data_sets;
 
