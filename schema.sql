@@ -1,3 +1,4 @@
+DROP SCHEMA IF EXISTS dumptruck CASCADE;
 CREATE SCHEMA dumptruck;
 
 -- track all objects across all time series using this id
@@ -23,12 +24,12 @@ CREATE TABLE dumptruck.sources (
 -- basic information for each data series
 CREATE TABLE dumptruck.data_sets (
   name TEXT PRIMARY KEY
-  , description TEXT
-  , val_type TEXT -- see http://www.postgresql.org/docs/9.4/static/datatype.html
-  , source TEXT REFERENCES sources (name)
-  , license TEXT
-  , duplicate_of TEXT REFERENCES dumptruck.data_sets (name)
-  , last_updated TIMESTAMP
+  , description TEXT DEFAULT NULL
+  , val_type TEXT DEFAULT NULL -- should be one of types listed on http://www.postgresql.org/docs/9.4/static/datatype.html
+  , source TEXT DEFAULT NULL REFERENCES dumptruck.sources (name)
+  , license TEXT DEFAULT NULL
+  , duplicate_of TEXT DEFAULT NULL REFERENCES dumptruck.data_sets (name)
+  , last_updated TIMESTAMP DEFAULT NULL
 );
 
 -- each series should look like this
@@ -38,3 +39,5 @@ CREATE TABLE dumptruck.series_1 (
   , val NUMERIC -- should be appropriate type for series
   , UNIQUE(id, ts)
 );
+
+psql -c "COPY (name, description, val_type) dumptruck.data_sets FROM STDIN CSV DELIMITER ','" < data_sets.csv
