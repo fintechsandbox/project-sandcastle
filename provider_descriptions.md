@@ -1,6 +1,6 @@
 ## Alexandria
 
-Alexandria uses the content and context of news stories to analyze the information in real time and provide a sentiment analysis. Using probabilistic algorithms developed from a concept-based, non-linear statistical methodology of testing finance professionals, Alexandria has the ability to model complex dependencies between various words of semantic information, which helps it better identify sentiment than standard rules-based approaches. Sentiment data over a certain period is aggregated into a log net sentiment metric, which can then be compared with other companies in the market.
+Alexandria uses the content and context of news stories to analyze the information in real time and provide a sentiment analysis. Using probabilistic algorithms developed from a concept-based, non-linear statistical methodology of testing finance professionals, Alexandria has the ability to model complex dependencies between various words of semantic information, which helps it better identify sentiment than standard rules-based approaches. Sentiment data over a certain period is aggregated into a log net sentiment metric, which can then be compared with other companies in the market. Alexandria prefers to deliver their data in CSV format over FTP.
 
 **Example Usage**
 - Market sentiment analysis
@@ -23,7 +23,7 @@ SIX Financial offers reference data on corporate actions and price information f
 
 ## Thompson Reuters
 
-Thompson Reuters provides access to thousands of fundamental data points from the three main financial statements and beyond. Information includes typical standardized financial data such as earnings, dividends, and margins, but also contains sector specific data such as business and geographic segments, operating information (business intelligence), and major customers.  
+Thompson Reuters provides access to thousands of fundamental data points from the three main financial statements and beyond. Information includes typical standardized financial data such as earnings, dividends, and margins, but also contains sector specific data such as business and geographic segments, operating information (business intelligence), and major customers. TR prefers to deliver their data through an online SOAP-based API or XML structured files via FTP.  
 
 **Example Usage**
 - Fundamental data and price information
