@@ -11,3 +11,7 @@ Git tracked listing of data sources and descriptions designed to facilitate fina
 - S&P
 - Interactive Data
 - Alexandria
+
+## Contribution Guidelines
+- Please name scripts and their data examples consistently, i.e. `alexandria_*`
+- Please describe data sources such that new comers to the project can read the data description document and understand without having prior exposure to these data sets. 
