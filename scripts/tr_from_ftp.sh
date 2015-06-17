@@ -1,6 +1,6 @@
 #!/bin/bash
-# Handle fundamental files from Reuters ftp
-# Fetches, parses, and submits to database 
+
+# Fetch most recent archives from Thomson Reuters ftp site
 
 START=$SECONDS
 
