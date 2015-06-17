@@ -1,3 +1,12 @@
+/*
+Sample timeseries database schema that provides
+basic relations between a data master, data sources, 
+data sets, and any number of data series. Includes
+an example of how to directly ingest time series 
+from CSV into the data tables using 
+psql (postgres' command prompt).
+*/
+
 -- recommend always using a schema definition
 -- as the 'public' schema is subject to change by other apps
 DROP SCHEMA IF EXISTS dumptruck CASCADE;

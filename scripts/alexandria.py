@@ -1,3 +1,10 @@
+'''
+This ingest script is designed to parse CSV files from 
+Alexandria and write them into corresponding data
+tables in postgres. Requires the python postgres 
+database script. 
+'''
+
 import time
 from db import make_conn, execute, executemany
 import argparse

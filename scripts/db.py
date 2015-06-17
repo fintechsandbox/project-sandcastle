@@ -1,3 +1,8 @@
+'''
+Functions for use in connecting with and sending
+commands to a postgres database. 
+'''
+
 import psycopg2
 
 def make_conn(args):
