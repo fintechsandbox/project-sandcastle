@@ -1,0 +1,29 @@
+$ dbm -c 'select * from factset_prices limit 10'
+ fs_perm_sec_id |    day     |  adjdate   | currency | p_price | p_price_open | p_price_high | p_price_low | p_volume 
+----------------+------------+------------+----------+---------+--------------+--------------+-------------+----------
+ B2H55F-S-BR    | 2011-01-03 | 2011-01-03 | BRL      |   41.73 |        41.85 |        41.96 |        41.4 |    352.8
+ B2H55F-S-BR    | 2011-01-04 | 2011-01-04 | BRL      |   41.85 |         41.7 |        42.06 |        41.5 |      235
+ B2H55F-S-BR    | 2011-01-05 | 2011-01-05 | BRL      |   42.04 |        41.83 |         42.1 |       41.53 |    365.8
+ B2H55F-S-BR    | 2011-01-06 | 2011-01-06 | BRL      |   42.08 |        42.01 |        42.49 |          42 |    424.8
+ B2H55F-S-BR    | 2011-01-07 | 2011-01-07 | BRL      |    42.4 |        42.01 |        42.67 |       42.01 |      341
+ B2H55F-S-BR    | 2011-01-10 | 2011-01-10 | BRL      |      42 |         42.4 |        42.75 |       41.75 |    303.4
+ B2H55F-S-BR    | 2011-01-11 | 2011-01-11 | BRL      |   42.07 |        42.19 |        42.38 |       42.03 |    384.8
+ B2H55F-S-BR    | 2011-01-12 | 2011-01-12 | BRL      |   42.46 |         42.1 |         42.8 |        42.1 |      355
+ B2H55F-S-BR    | 2011-01-13 | 2011-01-13 | BRL      |   43.02 |         42.6 |        43.38 |       42.25 |    303.7
+ B2H55F-S-BR    | 2011-01-14 | 2011-01-14 | BRL      |   43.18 |        42.98 |        43.45 |       42.68 |    329.4
+(10 rows)
+
+$ dbm -c 'select * from factset_security_master limit 10'
+ fs_perm_sec_id |     isin     |                   proper_name                    | factset_entity_id | fs_primary_equity_id | fs_primary_listing_id | inactive_flag | fref_security_type 
+----------------+--------------+--------------------------------------------------+-------------------+----------------------+-----------------------+---------------+--------------------
+ B160LR-S-ID    | ID1000105604 | PT Global Mediacom Tbk                           | 06QRVY-E          | B160LR-S-ID          | B160LR-S-ID           | 0             | SHARE
+ B161NS-S-TW    | TW0001722007 | Taiwan Fertilizer Co., Ltd.                      | 05HZ9X-E          | B161NS-S-TW          | B161NS-S-TW           | 0             | SHARE
+ B196PR-S-HK    | HK0941009539 | China Mobile Limited                             | 0031W6-E          | B196PR-S-HK          | B196PR-S-HK           | 0             | SHARE
+ B1BDZW-S-TW    | TW0002330008 | Taiwan Semiconductor Manufacturing Co., Ltd.     | 001Y70-E          | B1BDZW-S-TW          | B1BDZW-S-TW           | 0             | SHARE
+ B1BG1X-S-TW    | TW0006505001 | Formosa Petrochemical Corp                       | 05W3SN-E          | B1BG1X-S-TW          | B1BG1X-S-TW           | 0             | SHARE
+ B29PWF-S-ID    | ID1000110802 | PT Bumi Serpong Damai Tbk                        | 06Y8N9-E          | B29PWF-S-ID          | B29PWF-S-ID           | 0             | SHARE
+ B2GZV8-S-TR    | TRASAHOL91Q5 | Haci Omer Sabanci Holding A.S.                   | 05HWNM-E          | B2GZV8-S-TR          | B2GZV8-S-TR           | 0             | SHARE
+ B2H55F-S-BR    | BRCPFEACNOR0 | CPFL Energia S.A.                                | 0066G5-E          | B2H55F-S-BR          | B2H55F-S-BR           | 0             | SHARE
+ B3F7MQ-S-MX    | MXP200821413 | Controladora Comercial Mexicana SA de CV Class B | 00352X-E          | B3F7MQ-S-MX          | B3F7MQ-S-MX           | 0             | SHARE
+ B4R6S5-S-KR    | KR7000660001 | SK Hynix Inc.                                    | 05HZ74-E          | B4R6S5-S-KR          | B4R6S5-S-KR           | 0             | SHARE
+(10 rows)
