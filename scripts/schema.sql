@@ -52,4 +52,4 @@ CREATE TABLE dumptruck.series_1 (
 );
 
 -- how to ingest directly to a data table from a csv 
-psql -c "COPY (name, description, val_type) dumptruck.data_sets FROM STDIN CSV DELIMITER ','" < data_sets.csv
+-- psql -c "COPY (name, description, val_type) dumptruck.data_sets FROM STDIN CSV DELIMITER ','" < data_sets.csv

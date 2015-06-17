@@ -5,6 +5,13 @@ Alexandria uses the content and context of news stories to analyze the informati
 **Example Usage**
 - Market sentiment analysis
 
+## Factset
+
+Factset contains similar data to Bloomberg, but makes it more easily available (and cheaper) by delivering it as CSV through FTP. 
+
+** Example Usage**
+- pricing and fundamental data 
+
 ## SIX Financial
 
 SIX Financial offers reference data on corporate actions and price information from a compilation of over 1,500 sources globally. Pricing and market information is drawn in real-time, along with data on fixed income and dividends. For fixed income and derivative securities that are not quoted, SIX uses a internal pricing system to price securities four times per day. 
@@ -24,7 +31,6 @@ Thompson Reuters provides access to thousands of fundamental data points from th
 ## Other Fintech Sandbox partners 
 
 See http://www.fintechsandbox.org/data-partners for the remaining partners, such as
-- Factset
 - Benzinga
 - Stocktwits
 - S&P
