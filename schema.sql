@@ -1,3 +1,5 @@
+-- recommend always using a schema definition
+-- as the 'public' schema is subject to change by other apps
 DROP SCHEMA IF EXISTS dumptruck CASCADE;
 CREATE SCHEMA dumptruck;
 
@@ -40,4 +42,5 @@ CREATE TABLE dumptruck.series_1 (
   , UNIQUE(id, ts)
 );
 
+-- how to ingest directly to a data table from a csv 
 psql -c "COPY (name, description, val_type) dumptruck.data_sets FROM STDIN CSV DELIMITER ','" < data_sets.csv
