@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReferenceInformation Major="3" Minor="0" Revision="1" xmlns="urn:reuterscompanycontent:referenceinformation03">
+<RepNo>AEA8B</RepNo>
+<Production Date="2015-06-16T18:06:15" />
+<CompanyInformation>
+<CompanyXrefs>
+<CompanyXref Type="FProXRef">300072342</CompanyXref>
+<CompanyXref Type="OrgID">103028424</CompanyXref>
+<CompanyName Type="Primary">K.P.R. Mill Ltd</CompanyName>
+</CompanyXrefs>
+<CompanyStatus>
+<Status Type="ActiveStatus">1</Status>
+<Status Type="CurrentEstimates">1</Status>
+<Company Type="EQU" />
+<AvailableInfo Type="BusinessIntelligence">1</AvailableInfo>
+<AvailableInfo Type="Financials">1</AvailableInfo>
+<AvailableInfo Type="Estimates">1</AvailableInfo>
+<AvailableInfo Type="SignificantDevelopment">1</AvailableInfo>
+<AvailableInfo Type="Officers">1</AvailableInfo>
+<FilingStatus CurrentStatus="Filing" ReasonCode="0" />
+<HasPublicDebt>0</HasPublicDebt>
+</CompanyStatus>
+<CompanyUpdates>
+<LastModified Type="Financials">2015-05-07T02:18:02</LastModified>
+<LastModified Type="Other">2015-06-16T03:10:42</LastModified>
+<LatestInformation Type="AnnualFinancials">2015-03-31</LatestInformation>
+<LatestInformation Type="InterimFinancials">2015-03-31</LatestInformation>
+</CompanyUpdates>
+<Currencies>
+<Currency Type="FinancialStatements">INR</Currency>
+<Currency Type="Estimates">INR</Currency>
+<Currency Type="PrimaryIssuePrice">INR</Currency>
+</Currencies>
+<IndustryClassification>
+<Taxonomy Type="TRBC">
+<Detail Order="1" Code="5320201010" Mnemonic="" Description="Textiles &amp; Leather Goods - NEC" />
+</Taxonomy>
+<Taxonomy Type="NAICS1997">
+<Detail Order="1" Code="313111" Description="Yarn Spinning Mills" />
+</Taxonomy>
+<Taxonomy Type="SIC1987">
+<Detail Order="1" Code="2281" Description="Yarn Spinning Mills" />
+</Taxonomy>
+</IndustryClassification>
+</CompanyInformation>
+<IssueInformation>
+<Issue ID="1" Type="C" Order="1">
+<IssueXrefs>
+<IssueXref Type="Name">Fully Paid Ord. Shrs</IssueXref>
+<IssueXref Type="Ticker">KPRMILL</IssueXref>
+<IssueXref Type="CUSIP">Y4964Y104</IssueXref>
+<IssueXref Type="ISIN">INE930H01015</IssueXref>
+<IssueXref Type="RIC">KPRM.NS</IssueXref>
+<IssueXref Type="SEDOL">B2339F7</IssueXref>
+<IssueXref Type="DisplayRIC">KPRM.NS</IssueXref>
+<IssueXref Type="InstrumentPI">32451986</IssueXref>
+<IssueXref Type="QuotePI">36514417</IssueXref>
+</IssueXrefs>
+<IssueStatus>
+<IssueType>Common Stock</IssueType>
+<Status Type="ActiveStatus">1</Status>
+<Status Type="PublicStatus">1</Status>
+<Status Type="ExpectedIPO">0</Status>
+<IPODate Year="2007" Month="8" Day="28" />
+</IssueStatus>
+<IssueSpecifics>
+<Exchange Code="NSE" Country="IND" Region="AP">National Stock Exchange of India</Exchange>
+<ListingType>OSR</ListingType>
+</IssueSpecifics>
+</Issue>
+</IssueInformation>
+</ReferenceInformation>
