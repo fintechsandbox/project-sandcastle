@@ -3,6 +3,11 @@ Sample script to parse fundamental values from a
 Thomson Reuter file downloaded from their FTP site. 
 Each set of fundamentals is written to its own 
 database table using the python [postgres] db script. 
+
+
+# From Elsen, Inc. 
+# Contact justin@elsen.co
+
 '''
 
 import xml.etree.ElementTree as ET

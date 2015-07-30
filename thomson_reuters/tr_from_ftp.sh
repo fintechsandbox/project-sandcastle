@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# From Elsen, Inc. 
+# Contact justin@elsen.co
+
 # Fetch most recent archives from Thomson Reuters ftp site
 
 START=$SECONDS

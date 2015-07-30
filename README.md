@@ -1,5 +1,5 @@
 # Project Sandcastle
-Git tracked listing of data sources and descriptions designed to facilitate financial data retrieval by documenting the data sets available through the Fintech Sandbox to include provider information, ingest scripts, and example data.
+Git tracked listing of data sources and descriptions designed to facilitate financial data retrieval by documenting the data sets available through the Fintech Sandbox to include provider information, ingest scripts, and example data. See http://www.fintechsandbox.org for more information. 
 
 ## Contribution Guidelines
 - Please name scripts and their data examples consistently, i.e. `alexandria_*`
