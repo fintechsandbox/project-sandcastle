@@ -1,3 +1,4 @@
+# Elsen's Experience
 Thompson Reuters provides access to thousands of fundamental data points from the three main financial statements and beyond. Information includes typical standardized financial data such as earnings, dividends, and margins, but also contains sector specific data such as business and geographic segments, operating information (business intelligence), and major customers. TR prefers to deliver their data through an online SOAP-based API or XML structured files via FTP.
 
 TR has become Elsen's primary provider, particularly for fundamental data and price information from the DataStream, WorldScope, and Reuters Knowledge Direct system. 
@@ -22,3 +23,8 @@ Parsed version of the official fundamental documentation. Helpful if you want to
 
 ## TRKD_API_Developer_Guide.pdf
 Official api documentation.
+
+# Kyper Data's Experience
+Thomson Reuters offers a historical market data service called Thomson Reuters Tick History (TRTH). The data can be requested via a SOAP API or a web-based GUI. Files are delivered via FTP.
+
+CAUTION: If a request is too large (say...more than 5GB), the request may be ignored. So, err on the small side with the number of securities and/or duration of history in each request.
