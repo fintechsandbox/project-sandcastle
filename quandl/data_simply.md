@@ -15,5 +15,3 @@ updated, and the new one is of unknown quality and recency.
 
 We're not updating to the new one because we don't want to have to make a separate call for each 
 symbol we're intetested in (i.e. all of them). Also they don't have CUSIP data.
-
- 
