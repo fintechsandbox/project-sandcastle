@@ -1,6 +1,12 @@
 # Project Sandcastle
 Git tracked listing of data sources and descriptions designed to facilitate financial data retrieval by documenting the data sets available through the Fintech Sandbox to include provider information, ingest scripts, and example data. See http://www.fintechsandbox.org for more information. 
 
-## Contribution Guidelines
-- Please name scripts and their data examples consistently, i.e. `alexandria_*`
-- Please describe data sources such that new comers to the project can read the data description document and understand without having prior exposure to these data sets. 
+## Contribution Guidelines for today (1st Meeting)
+- Commit your descriptions in a file like `your_startup.md`. These will be combined into a single README following today's "hacking". In the future, all additions should be directly to this README, but for today we're keeping things separate to avoid any collisions. 
+
+- Contributions should detail any/some/all of the following items:
+  - Which data sets you're currently using and how you're accessing them
+  - How you're using said data sets
+  - General experience with the data set and tips to facilitate the process for new startups
+  - Addition of example data sets or ingest scripts that you found helpful
+  - Some folks have had success purely working from the provider's documentation. If there was any documentation you found particularly helpful, either link it, or add it to the repo. 
