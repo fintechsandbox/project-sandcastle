@@ -1,8 +1,4 @@
-Which data sets you're currently using and how you're accessing them
-How you're using said data sets
-General experience with the data set and tips to facilitate the process for new startups
-Addition of example data sets or ingest scripts that you found helpful
-Some folks have had success purely working from the provider's documentation. If there was any documentation you found particularly helpful, either link it, or add it to the repo.
+#AlphaPack initial yodlee
 
 We're using Yodlee Interactive's Aggregation API. It comes in both SOAP and REST API formats. We use REST.
 +https://developer.yodlee.com/Aggregation_API/Aggregation_Quickstart/Aggregation_REST_Quick_Start_Guide
