@@ -1,6 +1,9 @@
 Volos
 =====
 
+[Documentation|https://www.xignite.com/products/#webservice]
+
+
 ## Functions To Pull Data
 
 ### GetGlobalHistoricalQuotesRange
