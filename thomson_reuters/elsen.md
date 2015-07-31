@@ -18,7 +18,7 @@ Example script to parse one of the funadmental reports downloaded with `tr_from_
 Official fundamental documentation.
 
 ## Fundamentals_Glossary_Parsed.xlsx
-Parsed version of the official fundamental documentation. Helpful if you want to programmatically generate documentation for a subset of all of the fundmentals. 
+Parsed version of the official fundamental documentation. Helpful if you want to programmatically generate documentation for a subset of all of the fundmentals. Note the descriptions do have some artifacts from the pdf that may need to be removed, depending on which parts you want. 
 
 ## TRKD_API_Developer_Guide.pdf
 Official api documentation.
