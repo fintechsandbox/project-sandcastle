@@ -24,6 +24,9 @@ Parsed version of the official fundamental documentation. Helpful if you want to
 ## TRKD_API_Developer_Guide.pdf
 Official api documentation.
 
+## TRQA_DataSources042014.pdf
+High level document of QA sources and corresponding licenses. Super helpful for quick checks into TR holdings. Note this is only for the QA product line.
+
 # Kyper Data's Experience
 Thomson Reuters offers a historical market data service called Thomson Reuters Tick History (TRTH). The data can be requested via a SOAP API or a web-based GUI. Files are delivered via FTP.
 
