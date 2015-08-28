@@ -75,3 +75,18 @@ Returns the complete option chain for an equity. (Also called with technicals an
 
 All of the modify functions in the lib/modify.js file are called with data from the functions above. They are called only when all of the data needed is loaded.
 
+Data Simply
+=====
+
+[http://www.xignite.com/product/global-security-master-data/api/ListExchanges/]
+
+
+## Some commonly used US exchange codes
+
+#### NYSE = XASE
+#### NASDAQ = XNAS
+#### AMEX = AMXO (AMEX is also known as NYSE MKT, which is different from NYSE) 
+
+Xignite uses their own internal codes for the various exchanges. They are all listed there but you have to find them. Posting here for convenience.
+
+
