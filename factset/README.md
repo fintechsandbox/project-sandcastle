@@ -4,5 +4,5 @@ FactSet has an interesting dataset called [Revere](http://www.factset.com/campai
 # Elsen POV:
 Factset contains similar data to Bloomberg, but makes it more easily available (and cheaper) by delivering it as CSV through FTP. 
 
-## factset.sql
+##### [factset.sql](factset.sql)
 Sample Factset schema derived from factset CSVs delivered via Factset's ftp.
