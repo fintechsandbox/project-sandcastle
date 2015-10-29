@@ -10,4 +10,4 @@ Contributions should detail any/some/all of the following items:
   - Some folks have had success purely working from the provider's documentation. If there was any documentation you found particularly helpful, either link it, or add it to the repo. 
   
 ## Contact
-Feel free to post any issues/comments/requests as issues in this repository (please tag the relevant parties), on the Fintech Sandbox slack channel, or to ping any of the involved companies at their sandbox@<company> email address. 
+Feel free to post any issues/comments/requests as issues in this repository (please tag the relevant parties), on the Fintech Sandbox slack channel, or to ping any of the involved companies at their sandbox@\<company\> email address. 
