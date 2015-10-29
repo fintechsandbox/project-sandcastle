@@ -19,7 +19,7 @@ Example script to parse one of the funadmental reports downloaded with `tr_from_
 Official fundamental documentation. Helpful for finding definitions of more obscure fundamentals. Doesn't show how they're all calculated, but if you can find the fundamental code, TR can help you find more information about that specific entity. 
 
 1. #####[Fundamentals_Glossary_Parsed.xlsx](Fundamentals_Glossary_Parsed.xlsx)
-Parsed version of the official fundamental documentation. Helpful if you want to programmatically generate documentation for a subset of all of the fundmentals. Note the descriptions do have some artifacts from the pdf that may need to be removed, depending on which parts you want. 
+Parsed version of `Fundamentals_Glossary.pdf`. Helpful if you want to programmatically generate documentation for a subset of all of the fundmentals. Note the descriptions do have some artifacts from the pdf that may need to be removed, depending on which parts you want. 
 
 1. #####[TRKD_API_Developer_Guide.pdf](TRKD_API_Developer_Guide.pdf)
 Official TR api documentation.
