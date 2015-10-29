@@ -87,6 +87,6 @@ Data Simply
 #### NASDAQ = XNAS
 #### AMEX = AMXO (AMEX is also known as NYSE MKT, which is different from NYSE) 
 
-Xignite uses their own internal codes for the various exchanges. They are all listed there but you have to find them. Posting here for convenience.
+Xignite uses the standard ISO 10383 Market Identifier Codes (MIC) for the various exchanges. They are all listed there and in the ISO 10383 document, but you have to find them. Posting here for convenience.
 
 
