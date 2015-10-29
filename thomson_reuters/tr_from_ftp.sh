@@ -34,7 +34,7 @@ PASS='your_ftp_password_here'
 SEARCH=$TODAY"_1of1.xml.zip"
 
 OUTPUT='ls.output'
-ODIR=./reuters
+ODIR=.
 CUR=`pwd`
 
 # jump to data dir
