@@ -72,7 +72,7 @@ do
 	unzip -uo $fname -d $UNZIPPED
 
 	# process the downloaded files
-	find $UNZIPPED -name STDINT_* -exec /usr/bin/python ./parseReuters.py $RECENT --files {} +
+	find $UNZIPPED -name STDINT_* -exec /usr/bin/python tr_parse_file.py $RECENT --files {} +
 
 done
 
