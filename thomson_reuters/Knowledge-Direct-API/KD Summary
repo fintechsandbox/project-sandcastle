@@ -1,0 +1,33 @@
+###Reuters Knowledge Direct    
+
+
+####Overview:  
+Thomson Reuters Knowledge Direct is an API platform which offers access to a wealth of financial information on Thomson Reuters. Offered as part of the Digital Solutions, Knowledge Direct integrates into company websites, trading platforms and mobile applications to provide intraday and interday market data and news. In comparison, Digital Solutions offers customized solutions to clients.
+
+The company offers different [versions](http://financial.thomsonreuters.com/content/dam/openweb/documents/pdf/financial/digital-solutions-content-packages.pdf) for retai l and institutional users. Other general information is available on the product website: [www.financial.thomsonreuters.com](http://financial.thomsonreuters.com/en/products/infrastructure/trading-infrastructure/digital-solutions/knowledge-direct-api-integration.html).
+
+####Types of Featured Databases:  
+- Real-time quotes available for both intraday and interday:
+    - Pricing of equities, FX, fixed income, ETFs, commodities and derivatives. 
+    - Country data package and 10-minute summary on selected markets. 
+ - Fundamentals, estimates & recommendations:
+ 	- Consensus estimates on revenues, EPS, EBITDA and dividend per share for over 16,000 companies – more than 16 types of accounting estimates along with financial statements can be downloaded.
+ 	- Business overview, financial ratios, valuations and forecast data are available for more than 44,000 firms.
+ 	- Analyst recommendations can be viewed for individual stocks.
+ - Specialized Lipper funds database:
+    - Dividends, full holdings updated twice a month.
+    - Total net asset value, distribution value and newly available funds.
+    - Other non-numerical information such as Reuters News and management search.
+
+####Data Access:  
+* Request Builder:
+    - Either available through APIs or simple navigation.
+ * Data Guide:
+    - Quick access to quotes and news using RIC as the identification code. 
+
+####Data Formats:  
+* Latest industry-standard SOAP XML formats and online views ready for both websites and mobiles.
+
+####Reference:
+* www.trkd.thomsonreuters.com
+
