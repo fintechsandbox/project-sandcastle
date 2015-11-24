@@ -1,0 +1,22 @@
+{
+  "name": "factset-contrib",
+  "version": "1.0.0",
+  "description": "Factset table browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "Factset",
+    "SQL",
+    "Sample",
+    "Feed",
+    "Data",
+    "Index"
+  ],
+  "author": "Datavore Labs",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "lodash": "^3.10.1"
+  }
+}
