@@ -29,7 +29,7 @@ function schemaLineParser(filename, delimiter)
 	rl.on('close', function()
 	{
 		//console.log(JSON.stringify(processor.tables));
-        Fs.writeFile('data/schema.json', JSON.stringify(processor.tables), function(err)
+        Fs.writeFile('data/schema.json', 'var schema = ' + JSON.stringify(processor.tables), function(err)
         {
             if(err) return console.log('Something went really wrong... Uggh!');
 
@@ -152,8 +152,10 @@ ProcessLine.prototype.process = function(lineParts){
 function existsSync(filename) {
     try {
         Fs.accessSync(filename);
+		console.log('here')
         return true;
     } catch(ex) {
+		console.log(ex);
         return false;
     }
 }
