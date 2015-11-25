@@ -11,7 +11,8 @@ python -m SimpleHTTPServer 8000
 
 Then navigate to http://localhost:8000/index.html to browse and search the data.
 
-## Updating to the latest version of the data
+## Updating to the latest version of the schema (in case the schema changes in the future)
+
 
 ### Pre-requisites 
 *Change directory to project-sandcastle/factset-schemabrowser
