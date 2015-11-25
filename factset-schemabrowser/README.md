@@ -15,8 +15,8 @@ Then navigate to http://localhost:8000/index.html to browse and search the data.
 
 
 ### Pre-requisites 
-*Change directory to project-sandcastle/factset-schemabrowser
-*Install node and npm
+* Change directory to project-sandcastle/factset-schemabrowser
+* Install node and npm
 * Download the latest version of the schema file from Factset FTP feed. The file is located at `sandbox-files/schema/spl_v2_schema.txt`
 ** The sample file is uploaded in the project-sandcastle/factset-schemabrowser/data directory
 
