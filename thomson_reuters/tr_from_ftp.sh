@@ -34,7 +34,7 @@ PASS='your_ftp_password_here'
 SEARCH=$TODAY"_1of1.xml.zip"
 
 OUTPUT='ls.output'
-ODIR=/home/data/reuters
+ODIR=.
 CUR=`pwd`
 
 # jump to data dir
@@ -72,7 +72,7 @@ do
 	unzip -uo $fname -d $UNZIPPED
 
 	# process the downloaded files
-	find $UNZIPPED -name STDINT_* -exec /usr/bin/python /home/deploy/investigator/bin/parseReuters.py $RECENT --files {} +
+	find $UNZIPPED -name STDINT_* -exec /usr/bin/python tr_parse_file.py $RECENT --files {} +
 
 done
 
