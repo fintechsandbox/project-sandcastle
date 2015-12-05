@@ -24,7 +24,9 @@ You might be thinking at this point that you would simply use the Capital IQ dat
 
 ### Data Sets
 
-The most important advice I could give at this point is to establish your exact data requirements down to the last detail with S&P in advance. All the Capital IQ data is split into major data sets within which there are multiple add-on packages which provide additional data and metadata. You cannot assume that the basic packages contain the necessary information because they probably will not. To avoid going back again and again to request further packages, all of which will require renegotiation of your contract, you should know exactly what you will and won't be given access to, down to the last data point, before heading to the integration stage.
+The most important advice I could give at this point is to establish your exact data requirements down to the last detail with S&P in advance. All the Capital IQ data is split into major data sets within which there are multiple add-on packages which provide additional data and metadata. You cannot assume that the basic packages contain the necessary information because they probably will not. To avoid going back again and again to request further packages, all of which will require renegotiation of your contract, you should know exactly what you will and won't be given access to, to the last item, before heading to the integration stage.
+
+As an example - if you want the financial statements you'll be looking at the Latest Financials package. What you may not realise is that this only contains the line items for each quarter. If you want to map those back to the document they came from, whether it's the Income statement, Balance sheet or Cash flow statement, you'll need the 'Financial Display' Add-on. This pattern repeats with often 'basic' metadata abstracted into add-on packages which ultimately you will need to pay more for.
 
 #### Coverage of the FTP
 
