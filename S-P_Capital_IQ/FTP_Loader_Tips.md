@@ -9,7 +9,7 @@ If you are using large volumes of data then they will steer you away from the AP
 
 ## The FTP Option
 
-The first thing you should know about the FTP option is that is more complicated than the API.
+The first thing you should know about the FTP option is that it is more complicated than the API.
 
 There are two options here:
 
@@ -24,13 +24,13 @@ You might be thinking at this point that you would simply use the Capital IQ dat
 
 ### Data Sets
 
-The most important advice I could give at this point is to establish your exact data requirements down to the last detail with S&P in advance. All the Capital IQ data is split into major data sets within which there are multiple add-on packages which provide additional data and metadata. You cannot assume that the basic packages contain the necessary information because they probably will not. To avoid going back again and again to request further packages, all of which will require renegotiation of your contract, you should know exactly what you will and won't be given access to, down to the exact data point, before heading to the integration stage.
+The most important advice I could give at this point is to establish your exact data requirements down to the last detail with S&P in advance. All the Capital IQ data is split into major data sets within which there are multiple add-on packages which provide additional data and metadata. You cannot assume that the basic packages contain the necessary information because they probably will not. To avoid going back again and again to request further packages, all of which will require renegotiation of your contract, you should know exactly what you will and won't be given access to, down to the last data point, before heading to the integration stage.
 
 #### Coverage of the FTP
 
 While the S&P coverage, past and present, of companies, securities, estimates, financial and fundamental data is naturally excellant not everything is available using just the FTP alone.
 
-Some data just isn't available and must be imported through other means:
+Some data must be imported by other means:
 
 * The **Global Instruments Cross Reference Service (GICRS)** which maps Capital IQ internal IDs to standard company or stock identifiers such as the **ISIN**, **CINS**, **CUSIP** or **Valor** is a standalone file which you must parse and store yourself.
 
