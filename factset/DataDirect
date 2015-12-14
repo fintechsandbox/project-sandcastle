@@ -1,0 +1,97 @@
+import requests
+from requests.auth import HTTPBasicAuth
+import pandas as pd
+import numpy as np
+
+def dfExtractFormulaHistory(data):
+
+    """This function pulls timeseries data from the 
+    ExtractFormulaHistory dataset. You give it a list of the field names 
+    (metrics) that you want to pull, a list of the stocks that you want, 
+    and the dates you want the information for.
+
+    Args:
+        stocks   : comma-separated string of stocks
+        quantity : list of field names (metrics)
+        dates    : formatted string of dates (include frequency)
+
+    Returns:
+        Pandas dataframe
+
+    Example inputs:
+        stocks = 'VIX,aapl,HTZ'
+        quantity = [ 'P_BETA_LOCIDX', 'FG_EPS', 'FG_PBK', 'FG_DIV_YLD', 'FG_PRICE', 'FG_PRICE_RSI' ]
+        dates = '&dates=20150102:20151231:D'
+
+    Example usage:
+        fact_data = runFactSet( stocks, quantity, dates)
+    """
+
+    temp = data.text[:-2].split('\n')
+    df = pd.DataFrame(columns = temp[3].split('|'))
+    for ii in range(len(temp[4:])):
+        df.loc[ii] = temp[4+ii].split('|')
+#        print temp[4+ii].split('|')
+
+    return df
+def runFactSet(stocks, quantity, dates):
+    login = LOGIN_HERE
+    password = PASS_HERE
+    #old l=NUTONIAN_546074_SERVICES,p=6s2MZx0VeF7jruUe
+    path = 'https://datadirect-beta.factset.com/services/fastfetch?'
+    quantity = ','.join(map(str, quantity))               
+    query = 'factlet=ExtractFormulaHistory&ids='+stocks+'&items='+quantity+'&format=pipe'+dates+"&feelback, n"
+    ttt = requests.get(path+query, auth=HTTPBasicAuth(login, password))
+    pulled_data = dfExtractFormulaHistory(ttt)
+    return pulled_data
+
+    
+
+def runFactSetEcon(stocks, quantity, dates):
+    """This function pulls timeseries from the ExtractEconData 
+dataset. You give it a list of the field names (metrics) that you 
+want to pull, a list of the ids that you want, and the dates you want 
+the information for.
+
+    Args:
+        stocks   : comma-separated string of stocks
+        quantity : list of field names (metrics)
+        dates    : formatted string of dates (include frequency)
+
+    Returns:
+        Pandas dataframe
+
+    Example inputs:
+        ids = 'CC_US'
+        quantity = [ 'FDS_ECON_BOPGBAL_M', 'FDS_ECON_CA_GDP_M', 'FDS_ECON_BRENT_M', 'FDS_ECON_RCP_USD_M', 'FDS_ECON_CPI_M' ]
+        dates = '&dates=20150102:20151231:D'
+
+    Example usage:
+        fact_econ_data = runFactSetEcon( ids, quantity, dates )
+    """
+
+    login = LOGIN_HERE
+    password = PASS_HERE
+    #old l=NUTONIAN_546074_SERVICES,p=6s2MZx0VeF7jruUe
+    path = 'https://datadirect-beta.factset.com/services/fastfetch?'
+
+    quantity = ','.join(map(str, quantity))               
+    query = 'factlet=ExtractEconData&ids='+stocks+'&items='+quantity+'&format=pipe'+dates+"&feelback, n"
+
+    ttt = requests.get(path+query, auth=HTTPBasicAuth(login, password))
+    pulled_data = dfExtractFormulaHistory(ttt)
+    return pulled_data
+
+def fillFactBlanksWithNans(pulled_data):
+    """This function replaces blank fields with NaNs for easier data cleaning.
+
+    Args:
+        pulled_data: DataFrame as pulled from Factset
+
+    Returns:
+        pulled_data: DataFrame with all blanks filled with NaNs
+    """
+    cols = pulled_data.columns
+    for col in cols[2:]:
+        pulled_data[col] = pulled_data[col].replace('',np.nan).astype(float)
+    return pulled_data
