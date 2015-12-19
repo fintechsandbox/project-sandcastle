@@ -1,0 +1,95 @@
+Xignite Event Codes for Important US Economic Events
+
+Every Xignite economic event starts with the Event Code listed below followed by a 6 digit number that represents the Economic event ID for that specific economic event. Below are the event codes for the most important US economic releases:
+
+###
+Federal Reserve Interest Rate Decision: FOMCMPA
+GDP: GDPH
+Non-Farm Payrolls: LANAGRA
+Unemployment Rate: LANAGRA
+Jobless Claims: LANAGRA
+Inflation Rate: PCU
+Housing Starts: HST
+Retail Sales: NRST
+###
+
+To get the actual values and dates for the above codes, this request should be used within the Calendar API product. Below is a sample request to find out the next values for the Federal Reserve interest rate decisions:
+###
+EXAMPLE
+Xignite API: Calendar
+Xignite Call: GetEventsByEventCode
+Get events based on the event code and optionally within a specified released range.
+Paramaters:
+- Event code
+- Release start date
+- Release end date
+Sample Request: 
+http://www.xignite.com/xCalendar.json/GetEventsByEventCode?EventCode=FOMCMPA&ReleasedOnStart=7/19/2015&ReleasedOnEnd=9/19/2015
+Sample Response:
+{
+    "Summaries": [
+        {
+            "EventID": "FOMCMPA466474",
+            "EventCode": "FOMCMPA",
+            "CountryCode": "US",
+            "EventName": "FOMC Meeting Announcement",
+            "ReleasedOn": "2015-07-29T14:00:00",
+            "Values": [
+                {
+                    "ValueName": "Merit extra attention",
+                    "Consensus": "",
+                    "Actual": "False",
+                    "Prefix": "",
+                    "Suffix": "",
+                    "Outcome": "Success",
+                    "Message": "",
+                    "Identity": null,
+                    "Delay": 0
+                },
+                {
+                    "ValueName": "Federal Funds Rate - Target Level",
+                    "Consensus": "",
+                    "Actual": "0 to 0.25",
+                    "Prefix": "",
+                    "Suffix": "Federal Funds Ra",
+                    "Outcome": "Success",
+                    "Message": "",
+                    "Identity": null,
+                    "Delay": 0
+                }
+            ],
+            "Outcome": "Success",
+            "Message": "",
+            "Identity": null,
+            "Delay": 0
+        },
+        {
+            "EventID": "FOMCMPA466475",
+            "EventCode": "FOMCMPA",
+            "CountryCode": "US",
+            "EventName": "FOMC Meeting Announcement",
+            "ReleasedOn": "2015-09-17T14:00:00",
+            "Values": [
+                {
+                    "ValueName": "Merit extra attention",
+                    "Consensus": "",
+                    "Actual": "False",
+                    "Prefix": "",
+                    "Suffix": "",
+                    "Outcome": "Success",
+                    "Message": "",
+                    "Identity": null,
+                    "Delay": 0
+                }
+            ],
+            "Outcome": "Success",
+            "Message": "",
+            "Identity": null,
+            "Delay": 0
+        }
+    ],
+    "Outcome": "Success",
+    "Message": null,
+    "Identity": "Request",
+    "Delay": 0.016
+}
