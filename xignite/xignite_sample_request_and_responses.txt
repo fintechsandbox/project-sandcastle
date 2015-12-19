@@ -1,0 +1,361 @@
+Xignite Sample Request and Responses
+
+
+Covers sample request and responses for the following API products:
+* Global Quotes
+* Earnings Calendar
+* Calendar
+
+###
+DELAYED COMPANY PRICE QUOTE
+Xignite API: Global Quotes
+Xignite Call: GetGlobalDelayedQuote
+Works for a single ticker symbol (both US and international equities). Different call exists to request multiple tickers at once
+	•	Identifier Type (usually symbol) 
+	•	Identifier (usually the stock ticker) Sample Request: http://globalquotes.xignite.com/v3/xGlobalQuotes.json/GetGlobalDelayedQuote?IdentifierType=Symbol&Identifiers=JPM,AAPL
+Sample Response:
+{     "Outcome": "Success",     "Message": "Delay times are 15 mins for NYSE.",     "Identity": "Request",     "Delay": 0.0145203,     "Date": "8/18/2015",     "Time": "12:12:36 PM",     "UTCOffset": -4,     "Open": 67.98,     "Close": 0,     "High": 68.36,     "Low": 67.8399,     "Last": 68.06,     "LastSize": 298,     "Volume": 4473558,     "PreviousClose": 68.07,     "PreviousCloseDate": "8/17/2015",     "ChangeFromPreviousClose": -0.01,     "PercentChangeFromPreviousClose": -0.015,     "Bid": 68.04,     "BidSize": 1000,     "BidDate": "8/18/2015",     "BidTime": "12:12:33 PM",     "Ask": 68.05,     "AskSize": 1500,     "AskDate": "8/18/2015",     "AskTime": "12:12:33 PM",     "High52Weeks": 70.61,     "Low52Weeks": 54.26,     "Currency": "USD",     "TradingHalted": false,     "Security": {         "CIK": "0000019617",         "CUSIP": null,         "Symbol": "JPM",         "ISIN": null,         "Valoren": "1161460",         "Name": "JPMorgan Chase & Co",         "Market": "NYSE",         "MarketIdentificationCode": "XNYS",         "MostLiquidExchange": true,         "CategoryOrIndustry": "MoneyCenterBanks"     } }
+
+###
+TOP MARKET MOVERS
+Xignite API: Global Quotes
+Xignite Call: GetTopMarketMovers
+Returns financial quotes about the top gaining, losing, or moving equities on an exchange.
+Paramaters:
+* Market mover type
+	- PercentGainers to return the issues that have made the biggest gains by percent change in price from the previous close.
+	- PercentLosers to return the issues that have made the biggest losses by percent change in price from the previous close.
+	- MostActive to return the most active issues by volume for the current trading day
+* Number of market movers: number of results to be displayed
+* Exchanges: for which exchanges to be queried
+Sample Request: 
+http://globalquotes.xignite.com/v3/xGlobalQuotes.json/GetTopMarketMovers?MarketMoverType=PercentGainers&NumberOfMarketMovers=5&Exchanges=XNYS
+Sample Response:
+{
+    "Outcome": "Success",
+    "Message": null,
+    "Identity": "Request",
+    "Delay": 5.6600726,
+    "MarketMoverType": "PercentGainers",
+    "NumberOfMarketMovers": 5,
+    "Exchanges": "XNYS",
+    "InstrumentClass": "All",
+    "Movers": [
+        {
+            "Outcome": "Success",
+            "Message": "Delay times are 15 mins for NYSE.",
+            "Identity": null,
+            "Delay": 0,
+            "MarketMoverType": "PercentGainers",
+            "Symbol": "HELI",
+            "Name": "CHC Group Ltd",
+            "InstrumentClass": "Stock",
+            "Market": "NYSE",
+            "MarketIdentificationCode": "XNYS",
+            "Date": "8/18/2015",
+            "Time": "1:39:58 PM",
+            "UTCOffset": -4,
+            "Last": 0.3541,
+            "ChangeFromPreviousClose": 0.0641,
+            "PercentChangeFromPreviousClose": 22.103,
+            "Volume": 130519,
+            "Currency": "USD"
+        },
+        {
+            "Outcome": "Success",
+            "Message": "Delay times are 15 mins for NYSE.",
+            "Identity": null,
+            "Delay": 0,
+            "MarketMoverType": "PercentGainers",
+            "Symbol": "PKD",
+            "Name": "Parker Drilling Co",
+            "InstrumentClass": "Stock",
+            "Market": "NYSE",
+            "MarketIdentificationCode": "XNYS",
+            "Date": "8/18/2015",
+            "Time": "1:41:39 PM",
+            "UTCOffset": -4,
+            "Last": 2.912,
+            "ChangeFromPreviousClose": 0.442,
+            "PercentChangeFromPreviousClose": 17.895,
+            "Volume": 1394645,
+            "Currency": "USD"
+        },
+        {
+            "Outcome": "Success",
+            "Message": "Delay times are 15 mins for NYSE.",
+            "Identity": null,
+            "Delay": 0,
+            "MarketMoverType": "PercentGainers",
+            "Symbol": "HOV",
+            "Name": "Hovnanian Enterprises Inc",
+            "InstrumentClass": "Stock",
+            "Market": "NYSE",
+            "MarketIdentificationCode": "XNYS",
+            "Date": "8/18/2015",
+            "Time": "1:42:34 PM",
+            "UTCOffset": -4,
+            "Last": 1.813,
+            "ChangeFromPreviousClose": 0.233,
+            "PercentChangeFromPreviousClose": 14.747,
+            "Volume": 3993525,
+            "Currency": "USD"
+        },
+        {
+            "Outcome": "Success",
+            "Message": "Delay times are 15 mins for NYSE.",
+            "Identity": null,
+            "Delay": 0,
+            "MarketMoverType": "PercentGainers",
+            "Symbol": "NES",
+            "Name": "Nuverra Environmental Solutions Inc",
+            "InstrumentClass": "Stock",
+            "Market": "NYSE",
+            "MarketIdentificationCode": "XNYS",
+            "Date": "8/18/2015",
+            "Time": "1:41:36 PM",
+            "UTCOffset": -4,
+            "Last": 1.92,
+            "ChangeFromPreviousClose": 0.14,
+            "PercentChangeFromPreviousClose": 7.865,
+            "Volume": 189884,
+            "Currency": "USD"
+        },
+        {
+            "Outcome": "Success",
+            "Message": "Delay times are 15 mins for NYSE.",
+            "Identity": null,
+            "Delay": 0,
+            "MarketMoverType": "PercentGainers",
+            "Symbol": "TAP/A",
+            "Name": "Molson Coors Brewing Co",
+            "InstrumentClass": "Stock",
+            "Market": "NYSE",
+            "MarketIdentificationCode": "XNYS",
+            "Date": "8/18/2015",
+            "Time": "10:34:54 AM",
+            "UTCOffset": -4,
+            "Last": 74,
+            "ChangeFromPreviousClose": 3,
+            "PercentChangeFromPreviousClose": 4.225,
+            "Volume": 310,
+            "Currency": "USD"
+        }
+    ]
+}
+
+###
+COMPANY EARNINGS DATE
+Xignite API: EarningsCalendar
+Xignite Call: GetEarningCalendarItem
+Returns a value for a specific earnings calendar item. The type can be multiple options which Xignite gives you. This call returns the next earnings date for a particular company
+Parameters:
+Type: NextEarningDate
+IdentifierType: Symbol
+Identifier: Ticker 
+Sample Request:
+http://www.xignite.com/xEarningsCalendar.json/GetEarningCalendarItem?Type=NextEarningDate&IdentifierType=Symbol&Identifier=JPM
+Sample Response:
+{
+    "Security": {
+        "CIK": "0000019617",
+        "Cusip": "46625H100",
+        "Symbol": "JPM",
+        "ISIN": "US46625H1005",
+        "Valoren": "1161460",
+        "Name": "JPMorgan Chase & Co.",
+        "Market": "NYSE",
+        "CategoryOrIndustry": "FINANCIAL",
+        "Outcome": "Success",
+        "Message": null,
+        "Identity": null,
+        "Delay": 0
+    },
+    "Name": "Next Earning Date",
+    "ValueType": "Date",
+    "Value": "10/13/2015",
+    "Date": "08/19/2015",
+    "Unit": "na",
+    "Decimals": 0,
+    "Source": "Wall Street Horizon",
+    "Description": "The next earning announcement date. Requires a subscription to XigniteEarningsCalendar.",
+    "Outcome": "Success",
+    "Message": null,
+    "Identity": "Request",
+    "Delay": 0.002
+}
+
+###
+COMPANY DIVIDEND
+Xignite API: EarningsCalendar
+Xignite Call: GetEarningCalendarItem
+Returns a value for a specific earnings calendar item. The type can be multiple options which Xignite Gives you. For the next earnings estimate average, we need:
+Type: XDividend
+IdentifierType: Symbol
+Identifier: Ticker 
+Sample Request:
+http://www.xignite.com/xEarningsCalendar.json/GetEarningCalendarItem?Type=XDividend&IdentifierType=Symbol&Identifier=JPM
+Sample Response:
+{
+    "Security": {
+        "CIK": "0000019617",
+        "Cusip": "46625H100",
+        "Symbol": "JPM",
+        "ISIN": "US46625H1005",
+        "Valoren": "1161460",
+        "Name": "JPMorgan Chase & Co.",
+        "Market": "NYSE",
+        "CategoryOrIndustry": "FINANCIAL",
+        "Outcome": "Success",
+        "Message": null,
+        "Identity": null,
+        "Delay": 0
+    },
+    "Name": "XDividend",
+    "ValueType": "Numeric",
+    "Value": "0.44",
+    "Date": "08/19/2015",
+    "Unit": "na",
+    "Decimals": 2,
+    "Source": "Wall Street Horizon",
+    "Description": "The dividend value. Requires a subscription to XigniteEarningsCalendar.",
+    "Outcome": "Success",
+    "Message": null,
+    "Identity": "Request",
+    "Delay": 0.002
+}
+
+###
+COMPANY EX-DIVIDEND DATE
+Xignite API: EarningsCalendar
+Xignite Call: GetEarningCalendarItem
+Returns a value for a specific earnings calendar item. The type can be multiple options which Xignite Gives you. For the next earnings estimate average, we need:
+Type: LastXDividendDate
+IdentifierType: Symbol
+Identifier: Ticker 
+Sample Request:
+http://www.xignite.com/xEarningsCalendar.json/GetEarningCalendarItem?Type=LastXDividendDate&IdentifierType=Symbol&Identifier=AAPL
+Sample Response:
+{
+    "Security": {
+        "CIK": "0000320193",
+        "Cusip": "037833100",
+        "Symbol": "AAPL",
+        "ISIN": "US0378331005",
+        "Valoren": "908440",
+        "Name": "Apple Inc.",
+        "Market": "NASDAQGS",
+        "CategoryOrIndustry": "CONSUMER GOODS",
+        "Outcome": "Success",
+        "Message": null,
+        "Identity": null,
+        "Delay": 0
+    },
+    "Name": "Last XDividend Date",
+    "ValueType": "Date",
+    "Value": "8/6/2015",
+    "Date": "08/20/2015",
+    "Unit": "na",
+    "Decimals": 0,
+    "Source": "Wall Street Horizon",
+    "Description": "The reinvestment date. Requires a subscription to XigniteEarningsCalendar.",
+    "Outcome": "Success",
+    "Message": null,
+    "Identity": "Request",
+    "Delay": 0
+}
+
+###
+COMPANY DIVIDEND PAYMENT DATE
+Xignite API: EarningsCalendar
+Xignite Call: GetEarningCalendarItem
+Returns a value for a specific earnings calendar item. The type can be multiple options which Xignite Gives you. For the next earnings estimate average, we need:
+Type: DividendPayDate
+IdentifierType: Symbol
+Identifier: Ticker 
+Sample Request:
+http://www.xignite.com/xEarningsCalendar.json/GetEarningCalendarItem?Type=DividendPayDate&IdentifierType=Symbol&Identifier=AAPL
+Sample Response:
+{
+    "Security": {
+        "CIK": "0000320193",
+        "Cusip": "037833100",
+        "Symbol": "AAPL",
+        "ISIN": "US0378331005",
+        "Valoren": "908440",
+        "Name": "Apple Inc.",
+        "Market": "NASDAQGS",
+        "CategoryOrIndustry": "CONSUMER GOODS",
+        "Outcome": "Success",
+        "Message": null,
+        "Identity": null,
+        "Delay": 0
+    },
+    "Name": "Dividend Pay Date",
+    "ValueType": "Date",
+    "Value": "8/13/2015",
+    "Date": "08/20/2015",
+    "Unit": "na",
+    "Decimals": 0,
+    "Source": "Wall Street Horizon",
+    "Description": "The payable date. Requires a subscription to XigniteEarningsCalendar.",
+    "Outcome": "Success",
+    "Message": null,
+    "Identity": "Request",
+    "Delay": 0.003
+
+###
+Xignite API: Calendar
+Xignite Call: GetEventsDetails
+Get events based on the event ID and optionally within a specified released range. 
+Paramters:
+EventID
+Sample Request: 
+http://www.xignite.com/xCalendar.json/GetEventDetails?EventID=FOMCMPA466474
+Sample Response:
+{
+    "EventID": "FOMCMPA466474",
+    "EventCode": "FOMCMPA",
+    "CountryCode": "US",
+    "EventName": "FOMC Meeting Announcement",
+    "ReleasedOn": "2015-07-29T14:00:00",
+    "Values": [
+        {
+            "ValueName": "Merit extra attention",
+            "Consensus": "",
+            "Actual": "False",
+            "Prefix": "",
+            "Suffix": "",
+            "Outcome": "Success",
+            "Message": "",
+            "Identity": null,
+            "Delay": 0
+        },
+        {
+            "ValueName": "Federal Funds Rate - Target Level",
+            "Consensus": "",
+            "Actual": "0 to 0.25",
+            "Prefix": "",
+            "Suffix": "Federal Funds Ra",
+            "Outcome": "Success",
+            "Message": "",
+            "Identity": null,
+            "Delay": 0
+        }
+    ],
+    "Definition": "The Federal Open Market Committee (FOMC) is the policy-making arm of the Federal Reserve. It determines short-term interest rates in the U.S. when it decides the overnight rate that banks pay each other for borrowing reserves when a bank has a shortfall in required reserves. This rate is the fed funds rate. The FOMC also determines whether the Fed should add or subtract liquidity in credit markets separately from that related to changes in the fed funds rate. The Fed announces its policy decision (typically whether to change the fed funds target rate) at the end of each FOMC meeting. This is the FOMC announcement. The announcement also includes brief comments on the FOMC''''s views on the economy and how many FOMC members voted for and how many voted against the policy decision.  Since the last recession, the statement also includes information on Fed purchases of assets, so-called \"quantitative easing\", which affects longer-term interest rates.   Also, a key part of the announcement is guidance on potential changes in policy rates or asset purchases. <img src=''''https://calendar.econoday.com/images/1.gif?Xignite?definition''''/>",
+    "Description": "The Fed determines interest rate policy at FOMC meetings. These occur roughly every six weeks and are the single most influential event for the markets. For weeks in advance, market participants speculate about the possibility of an interest rate change at these meetings. If the outcome is different from expectations, the impact on the markets can be dramatic and far-reaching.<br/><br/>The interest rate set by the Fed, the federal funds rate, serves as a benchmark for all other rates. A change in the fed funds rate, the lending rate banks charge each other for the use of overnight funds, translates directly through to all other interest rates from Treasury bonds to mortgage loans. It also changes the dynamics of competition for investor dollars. When bonds yield 5 percent, they will attract more money away from stocks than when they only yield 3 percent.<br/><br/>The level of interest rates affects the economy. Higher interest rates tend to slow economic activity; lower interest rates stimulate economic activity. Either way, interest rates influence the sales environment. In the consumer sector, fewer homes or cars will be purchased when interest rates rise. Furthermore, interest rate costs are a significant factor for many businesses, particularly for companies with high debt loads or who have to finance high inventory levels. This interest cost has a direct impact on corporate profits. The bottom line is that higher interest rates are bearish for the stock market, while lower interest rates are bullish.<br/><br/>The Fed also began quantitative easing during the past recession and continues during the recovery.  Fed asset purchases affect longer-term interest rates and, in turn, other financial sectors and the economy.<br/><br/>The Fed also began quantitative easing during the past recession and continues during the recovery.  Fed asset purchases affect longer-term interest rates and, in turn, other financial sectors and the economy.<br/><br/>Econoday lists a separate \"FOMC Meeting Begins\" only for the first day of two-day policy meetings. Otherwise, \"FOMC Meeting Announcement\" serves the same purpose for one-day FOMC meetings since the announcement takes place just after the meeting concludes.<br/><br/><b>Frequency</b><br/>Eight times a year.<br/> <img src=''''https://calendar.econoday.com/images/1.gif?Xignite?description''''/>",
+    "CountryName": "UNITED STATES",
+    "IsInternational": false,
+    "ReleasedFor": "wk 1/5 1",
+    "ReleasedForStart": "0001-01-01T00:00:00",
+    "ReleasedForEnd": "0001-01-01T00:00:00",
+    "Highlights": "",
+    "Frequency": 0,
+    "ConsensusNotes": "",
+    "Outcome": "Success",
+    "Message": "",
+    "Identity": "Request",
+    "Delay": 0
+}
+
