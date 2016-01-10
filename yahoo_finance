@@ -1,0 +1,16 @@
+Author: Alt-Options
+
+This library provides some methods that should make it easy to communicate with the Yahoo Finance API. 
+It allows you to request detailed information, some statistics and historical quotes on stocks. Separate functionality is available to request a simple FX quote.
+
+Step 1:
+Figure out what kind of data do you need from the explorer.
+A good website to start is the following:
+https://developer.yahoo.com/yql/console/
+http://financequotes-api.com/
+
+Step 2:
+Figure out how to pull the date that you need with the right syntax.
+
+Step 3:
+Implement it in your code.
