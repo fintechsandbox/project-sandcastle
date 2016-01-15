@@ -1,0 +1,110 @@
+NOTE: This is for those of you who can't find real time options data in a good format. 
+
+Angular 1.4.x. Google Stock Options API.
+
+This tutorial is based on Kelly Elias’ guide on how to get stock options data from Google API in C# (You can find this guide at http://www.jarloo.com/google-stock-options-api/). To make life easier for front-end developers, we have decided to create this tutorial which does the exact same thing but in JavaScript AngularJS.
+
+DISCLAIMER: According to the original author, THIS IS NOT AN OFFICIAL API. GOOGLE DOES NOT SUPPORT THIS FOR ANYTHING BUT ITS OWN INTERNAL USES AND CAN CHANGE AT ANY TIME. USE THIS AT YOUR OWN RISK.
+
+
+Accessing the REST based Google Stock Options API 
+Source: Kelly Elias
+
+Step 1: Putting down the URL
+
+Google lists stock options on their finance site. Example: AAPL’s option chain
+
+The addition of “output=json” makes the link an API call: Download AAPL’s option chain using API
+
+URL format: http://www.google.com/finance/option_chain?q=TICKER&output=json
+
+Step 2: Understanding and formatting data from the API
+
+Although the call has “output=json”, the data is not exactly correctly formatted. We will cover this shortly.
+
+The call gives you back several pieces of data:
+•	The next expiry data
+•	A list of all available expiry dates for the symbol
+•	A list of all the puts
+•	A list of all the calls
+•	Price of the underlying stock
+
+You can checkout the snippet below or by downloading the AAPL’s option chain:
+
+{
+	expiry: {
+		y: 2015,
+		m: 5,
+		d: 8
+},
+expirations: [{
+	y: 2015,
+m: 5,
+d: 8
+},
+{
+	y: 2015,
+m: 6,
+d: 5
+},
+{
+	y: 2017,
+m: 1,
+d: 20
+}],
+puts: [{
+	cid: “43623726334021”,
+	s: “AAPL150508P00085000”
+	
+….	
+
+}]
+
+	…..
+
+*NOTE: the data has a 20 min delay.
+
+There is obviously way more expiry dates on AAPL options and also call options. But this should give you a good idea of general structure.
+
+This call however, only works for the latest expiry: all the options returned are for that expiry only. 
+
+
+You can select a different expiry easily through:
+
+http://www.google.com/finance/option_chain?q=TICKER&expd=expiryDay&expm=expiryMonth&expy=expiryYear&output=json
+
+As you can see, the results are not valid JSON. 
+
+Only some of the names are in quotes. This should be an easy fix by using a function below: 
+ 
+We use regex to identify unquoted names and replace those with quoted ones. 
+
+Step 3: Implementing API call in a service
+
+For this step, we will use Angular’s $http service to make a call that returns a promise with the data from Google.
+
+We will also use transformResponse within $http to return a correctly formatted json output.
+
+An example of the service is below (screenshot of codes).
+ 
+ https://www.dropbox.com/s/pf69ecqcv89rmjt/Screenshot%202016-01-15%2011.31.46.png?dl=0
+
+This service provides a function that takes in a ticker as a parameter and returns a promise with Google API data.
+
+Note: you can make the provided function take in date parameters as well for option chain with a specific expiration date. 
+
+Step 4: Using Google API service in a controller
+
+This step is very simple: inject a service as a dependency into a controller and call the function within that service. Remember that the returned value is a promise so we have to operate within .then function.
+
+Below is an example of a controller setup (screenshot of codes):
+
+https://www.dropbox.com/s/ls7711lm09ksbaj/Screenshot%202016-01-15%2011.31.04.png?dl=0
+	
+Similarly, you could inject the service into another service to do necessary logic operations on the Google data in there rather than in the controller:
+(screenshot of codes)
+ 
+https://www.dropbox.com/s/wgxbztemhppdc5p/Screenshot%202016-01-15%2011.31.16.png?dl=0
+
+
+
