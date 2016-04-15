@@ -43,6 +43,7 @@ module Xignite
     def send_request(action, options, &callbackBlock)
       url = construct_request_uri(action, :json, options)
       begin
+        response = nil
         Timeout::timeout(request_timeout) {
           response = Net::HTTP.get_response(URI.parse(url))
         }
