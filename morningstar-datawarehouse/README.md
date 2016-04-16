@@ -59,10 +59,24 @@ Morningstar::Datawarehouse::DataTransfuser.new("Monthly/DataWarehouse", "my_s3_b
 # Implement appenders for process parsed data
 class MyAppender < Morningstar::Datawarehouse::Parsers::DataAppender
 
-  def append(data)
+    def append(data)
     #process data here
-  end
+    end
   
+    #Note: 'shares' is array of SharesClassId 
+    def deleted_shares(shares=[], universe=nil)
+      #process delete shares
+    end
+    
+    #Note: 'shares' is array of SharesClassId 
+    def under_review_shares(shares=[], universe=nil)
+      #process shares with 'Under Review' status
+    end
+    
+    #Note: 'shares' is array of SharesClassId 
+    def updated_shares(shares=[], universe=nil)
+      #process updated shares
+    end
 end
 
 # Process all daily and monthly data

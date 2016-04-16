@@ -1,7 +1,7 @@
 require 'morningstar/datawarehouse/version'
 require 'morningstar/datawarehouse/configuration'
 require 'morningstar/datawarehouse/parsers/data_appender'
-require 'morningstar/datawarehouse/parsers/xml_parser'
+require 'morningstar/datawarehouse/parsers/data_xml_document'
 require 'morningstar/datawarehouse/s3/object_io'
 require 'morningstar/datawarehouse/s3/worker'
 require 'morningstar/datawarehouse/extractors/s3_extractor'

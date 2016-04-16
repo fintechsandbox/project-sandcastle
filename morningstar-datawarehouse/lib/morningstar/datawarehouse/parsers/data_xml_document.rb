@@ -3,9 +3,8 @@ require 'nokogiri'
 module Morningstar
   module Datawarehouse
     module Parsers
-      class XmlParser < Nokogiri::XML::SAX::Document
+      class DataXmlDocument < Nokogiri::XML::SAX::Document
 
-        attr_accessor :action_hash
         attr_writer :data_appenders
 
         def initialize
@@ -15,6 +14,10 @@ module Morningstar
           @parsed_node = {}
 
           @data_appenders = []
+          @deleted_shares = []
+          @under_review_shares = []
+          @updated_shares = []
+          @universe = nil
 
           @current_node = nil
           @current_value = nil
@@ -22,9 +25,30 @@ module Morningstar
         end
 
         def with_data_appenders(appenders=[])
-          @appenders += appenders
+          @data_appenders += appenders
           self
         end
+
+        def with_universe(universe)
+          @universe = universe
+          self
+        end
+
+        def with_deleted_shares(shares=[])
+          (@deleted_shares += shares) if shares
+          self
+        end
+
+        def with_under_review_shares(shares=[])
+          (@under_review_shares += shares) if shares
+          self
+        end
+
+        def with_updated_shares(shares=[])
+          (@updated_shares += shares) if shares
+          self
+        end
+
 
         def start_element name, attrs = []
           @stack_values.push name
@@ -125,6 +149,23 @@ module Morningstar
               @parsed_node = {}
           end
         end
+
+
+        def close
+
+          unless @deleted_shares.empty?
+            @data_appenders.each{|appender| appender.deleted_shares(@deleted_shares, @universe)}
+          end
+
+          unless @under_review_shares.empty?
+            @data_appenders.each{|appender| appender.under_review_shares(@under_review_shares, @universe)}
+          end
+
+          unless @updated_shares.empty?
+            @data_appenders.each{|appender| appender.updated_shares(@updated_shares, @universe)}
+          end
+        end
+
       end
     end
   end

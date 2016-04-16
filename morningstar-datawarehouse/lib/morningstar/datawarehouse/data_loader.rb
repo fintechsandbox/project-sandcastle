@@ -40,7 +40,7 @@ module Morningstar
         end
       end
 
-      def parse_group(group, doc, parser, appender, delta, universe, date)
+      def parse_group(group, doc, parser, delta, universe, date)
         s3_objects = group[delta][universe][date]
         zip = nil
         docs = []
@@ -74,8 +74,10 @@ module Morningstar
           parser.parse chunk
         end if zip
 
-        doc.action_hash = action_hash
-        appender.change_statuses(action_hash, universe)
+        doc.with_universe(universe).with_deleted_shares(action_hash["delete"])
+            .with_under_review_shares(action_hash["underReview"])
+            .with_updated_shares(action_hash["update"]).close()
+
         logger.info  "#{date} Ended \n"
       end
 
@@ -84,7 +86,7 @@ module Morningstar
         list =  @client.list_objects({bucket: @s3_bucket})
         group = {}
 
-        doc = Morningstar::Datawarehouse::Parsers::XmlParser.new.with_data_appenders(@data_appenders)
+        doc = Morningstar::Datawarehouse::Parsers::DataXmlDocument.new.with_data_appenders(@data_appenders)
 
         parser = Nokogiri::HTML::SAX::Parser.new(doc)
         set_group_object(list, group)
@@ -93,7 +95,7 @@ module Morningstar
           group['Monthly'].keys.each do |universe|
             group['Monthly'][universe].keys.each do |date|
               logger.info  "Started #{universe} #{date} \n"
-              parse_group(group, doc, parser, appender, 'Monthly', universe, date)
+              parse_group(group, doc, parser, 'Monthly', universe, date)
             end
           end
         end
@@ -101,7 +103,7 @@ module Morningstar
         group['Daily'].keys.each do |universe|
           group['Daily'][universe].keys.each do |date|
             logger.info  "Started #{universe} #{date} \n"
-            parse_group(group, doc, parser, appender, 'Daily', universe, date)
+            parse_group(group, doc, parser, 'Daily', universe, date)
           end
         end
       end
@@ -110,21 +112,21 @@ module Morningstar
       def process_universe_data(universe, appenders = [])
         list =  @client.list_objects({bucket: @s3_bucket})
         group = {}
-        doc = Morningstar::Datawarehouse::Parsers::XmlParser.new.with_data_appenders(appenders || @data_appenders)
+        doc = Morningstar::Datawarehouse::Parsers::DataXmlDocument.new.with_data_appenders(appenders || @data_appenders)
         parser = Nokogiri::HTML::SAX::Parser.new(doc)
         set_group_object(list, group)
 
         unless group['Monthly'][universe].nil?
           group['Monthly'][universe].keys.each do |date|
             logger.info  "Started #{universe} #{date} \n"
-            parse_group(group, doc, parser, appender, 'Monthly', universe, date)
+            parse_group(group, doc, parser, 'Monthly', universe, date)
           end
         end
 
         unless group['Daily'][universe].nil?
           group['Daily'][universe].keys.each do |date|
             logger.info  "Started #{universe} #{date} \n"
-            parse_group(group, doc, parser, appender, 'Daily', universe, date)
+            parse_group(group, doc, parser, 'Daily', universe, date)
           end
         end
       end
@@ -132,20 +134,20 @@ module Morningstar
       def process_daily_data(date)
         list =  @client.list_objects({bucket: @s3_bucket})
         group = {}
-        doc = Morningstar::Datawarehouse::Parsers::XmlParser.new.with_data_appenders(@data_appenders)
+        doc = Morningstar::Datawarehouse::Parsers::DataXmlDocument.new.with_data_appenders(@data_appenders)
         parser = Nokogiri::HTML::SAX::Parser.new(doc)
         set_group_object(list, group)
 
         group['Daily'].keys.each do |universe|
           logger.info "Started #{universe} #{date} \n"
-          parse_group(group, doc, parser, appender, 'Daily', universe, date)
+          parse_group(group, doc, parser, 'Daily', universe, date)
         end
       end
 
       def process_monthly_data(_date)
         list =  @client.list_objects({bucket: @s3_bucket})
         group = {}
-        doc = Morningstar::Datawarehouse::Parsers::XmlParser.new.with_data_appenders(@data_appenders)
+        doc = Morningstar::Datawarehouse::Parsers::DataXmlDocument.new.with_data_appenders(@data_appenders)
         parser = Nokogiri::HTML::SAX::Parser.new(doc)
         set_group_object(list, group)
 
@@ -153,7 +155,7 @@ module Morningstar
           group['Monthly'][universe].keys.each do |date|
             # TODO: Parse only previous month
             logger.info "Started #{universe} #{date}\n"
-            parse_group(group, doc, parser, appender, 'Monthly', universe, date) if !date.nil? && date.include?(_date)
+            parse_group(group, doc, parser, 'Monthly', universe, date) if !date.nil? && date.include?(_date)
           end
         end
       end
