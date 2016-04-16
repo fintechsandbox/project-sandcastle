@@ -29,8 +29,8 @@ module Morningstar
         config = Morningstar::Datawarehouse::Configuration.options
         @logger = config.logger
         @ftp_path = ftp_path
-        @ftp_crawler = Morning::Datawarehouse::FtpCrawler.new(ftp_path)
-        @s3_worker = Morning::Datawarehouse::S3::Worker.new(bucket)
+        @ftp_crawler = Morningstar::Datawarehouse::FtpCrawler.new(ftp_path)
+        @s3_worker = Morningstar::Datawarehouse::S3::Worker.new(bucket)
       end
 
       def logger
