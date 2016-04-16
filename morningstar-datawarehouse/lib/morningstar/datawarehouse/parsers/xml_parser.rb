@@ -22,7 +22,7 @@ module Morningstar
         end
 
         def with_data_appenders(appenders=[])
-          @appenders += appenders
+          @data_appenders += appenders
           self
         end
 
