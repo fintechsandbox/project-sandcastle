@@ -1,0 +1,1226 @@
+WCA - Series 695 - Bloomberg version
+
+This feed files can be regarded as a fixed format for all events if the generic definition is used.
+The Dates 1 to 12 and Rates and Ratio, section vary from event to event in content, but not in datatype
+The section Field 1 to 22 can vary in content and data type.
+All variable fields have a descriptive tag.
+All are varchar 255, but the real underlying datatype is given in this specification.
+
+Primary Key fields
+The first seven fields together marked with an asterisk are a primary, unique combination
+Option and Serial IDs are not always applicable, but will then always be populated with ones.
+
+
+Generic definition -
+
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+*EventCD	VarChar	Char String	10	EVENT	Event type code
+*EventID	Integer	32 bit	10		Unique global Event Identifier combined with Event type code
+*OptionID	Integer	32 bit	10		Mulitple Payment Option ID - Groups together multiple elements that comprise a complete payment option e.g. Part Cash, part Stock
+*SerialID	Integer	32 bit	10		Mulpile Payment Serial ID - Enumerates each element of an option from a multiple payment so the the combination of OptionID and SerialID
+*ScexhID	Integer	32 bit	10		Unique global level Listing ID
+*BbcID	Integer	32 bit	10		EDI Internal unique ID for Bloomberg Composite Codes
+*BbeID	Integer	32 bit	10		EDI Internal unique ID for Bloomberg Exchange Codes
+Actflag	Char	Char String	1	ACTION	Event Level Action Status
+Changed	Date	yyyy/mm/dd hh:mm:ss	19		Date event updated.
+Created	Date	yyyy/mm/dd	10		Date event first entered
+SecID	Integer	32 bit	10		Unique global level Security ID (can be used to link all multiple listings together
+IssID	Integer	32 bit	10		Unique global level Issuer ID (can be used to link all securities of a company togther)
+ISIN	Char	Char String	12		ISIN code (global level identifier)
+USCode	Char	Char String	9		USCode (global level identifier)
+IssuerName	VarChar	Char String	70		Name of Issuer
+CntryofIncorp	Char	Char String	2	CNTRY	ISO Country of Incorporation of Issuer
+SIC	VarChar	Char String	10		Standard Industrial Classification Code
+CIK	VarChar	Char String	10		Central Index Key
+IndusID	Integer	32 bit	10	INDUS	EDI Proprietary Industry Sector Code
+SectyCD	Char	Char String	3	SECTYPE	Type of Equity Instrument
+SecurityDesc	VarChar	Char String	70		Security Description	
+ParValue	Decimal	14.5	14		Security Parvalue	
+PVCurrency	Char	Char String	3	CUREN	Security Parvalue Currency	
+StatusFlag	Char	Char String	1	SECSTATUS	Inactive at the global level else security is active. Not to be confused with delisted which is inactive at the exchange level	
+PrimaryExchgCD	Char	Char String	6	EXCHANGE	Exchange code for the primary listing (empty if unknown)	
+BbgCurrency	Char	Char String	3	CUREN	Bloomberg Trading Currency
+BbgCompositeGlobalID	Char	Char String	12		Bloomberg composite global ID
+BbgCompositeTicker	VarChar	Char String	40	CUREN	Bloomberg composite ticker
+BbgGlobalID	Char	Char String	12		Bloomberg global ID
+BbgExchangeTicker	VarChar	Char String	40		Bloomberg exchange ticker
+StructCD	VarChar	Char String	10		
+ExchgCntry	Char	Char String	2	CNTRY	Country of Exchange where listed	
+ExchgCD	Char	Char String	6	EXCHANGE	EDI maintained Exchange code. Equivalent to the MIC code but necessary as MIC might not be available in a timely fashion.	
+Mic	Char	Char String	4	MICCODE	ISO standard Market Identification Code	
+Micseg	Char	Char String	4	MICCODE	ISO standard Market Identification Code	
+LocalCode	VarChar	Char String	50		Local code unique at Market level - a ticker or number	
+ListStatus	Char	Char String	1	LISTSTAT	Indicates whether a security is Listed on an Exchange or Unlisted Indicates Exchange Listing Status	
+Date1Type	VarChar	Char String	20		Type of calendar date
+Date1	Date	yyyy/mm/dd	10		Calendar date
+Date2Type	VarChar	Char String	20		Type of calendar date
+Date2	Date	yyyy/mm/dd	10		Calendar date
+Date3Type	VarChar	Char String	20		Type of calendar date
+Date3	Date	yyyy/mm/dd	10		Calendar date
+Date4Type	VarChar	Char String	20		Type of calendar date
+Date4	Date	yyyy/mm/dd	10		Calendar date
+Date5Type	VarChar	Char String	20		Type of calendar date
+Date5	Date	yyyy/mm/dd	10		Calendar date
+Date6Type	VarChar	Char String	20		Type of calendar date
+Date6	Date	yyyy/mm/dd	10		Calendar date
+Date7Type	VarChar	Char String	20		Type of calendar date
+Date7	Date	yyyy/mm/dd	10		Calendar date
+Date8Type	VarChar	Char String	20		Type of calendar date
+Date8	Date	yyyy/mm/dd	10		Calendar date
+Date9Type	VarChar	Char String	20		Type of calendar date
+Date9	Date	yyyy/mm/dd	10		Calendar date
+Date10Type	VarChar	Char String	20		Type of calendar date
+Date10	Date	yyyy/mm/dd	10		Calendar date
+Date11Type	VarChar	Char String	20		Type of calendar date
+Date11	Date	yyyy/mm/dd	10		Calendar date
+Date12Type	VarChar	Char String	20		Type of calendar date
+Date12	Date	yyyy/mm/dd	10		Calendar date
+Paytype	Char	Char String	1	PAYTYPE	Paytype flag
+RDID	Integer	32 bit	10		Record Date ID. Useful to link to other records sharing the same record date
+Priority	Integer	8 bit	2		Indicates order of events where record date is shared
+DefaultOpt	Boolean	Char String	1	BOOLEAN	Paytype flag
+OutturnSecID	Integer	32 bit	10		EDI Security ID for an outturn security if any. Where sucessor the outturn SecID will be the same as the parent SecID
+OutturnIsin	Char	Char String	12		ISIN code outturn. These can be resultant OR successor codes.
+RatioOld	Decimal	15.7	15		Number of old shares. Number of New Securities the shareholder receives as a proportion of Old Securities surrendered
+RatioNew	Decimal	15.7	15		Number of new shares
+Fractions	Char	Char String	1	FRACTIONS	Fractions
+Currency	Char	Char String	3	CUREN	ISO Currency Code
+Rate1Type	VarChar	Char String	20		Type of of pay rate
+Rate1	Decimal	14.5	18		
+Rate2Type	VarChar	Char String	20		Type of of pay rate
+Rate2	Decimal	14.5	18		Pay rate
+Field1Name	VarChar	Char String	20		Name of Event specific Field
+Field1	VarChar	Char String	255		Event Specific Field Content
+Field2Name	VarChar	Char String	20		Name of Event specific Field
+Field2	VarChar	Char String	255		Event Specific Field Content
+Field3Name	VarChar	Char String	20		Name of Event specific Field
+Field3	VarChar	Char String	255		Event Specific Field Content
+Field4Name	VarChar	Char String	20		Name of Event specific Field
+Field4	VarChar	Char String	255		Event Specific Field Content
+Field5Name	VarChar	Char String	20		Name of Event specific Field
+Field5	VarChar	Char String	255		Event Specific Field Content
+Field6Name	VarChar	Char String	20		Name of Event specific Field
+Field6	VarChar	Char String	255		Event Specific Field Content
+Field7Name	VarChar	Char String	20		Name of Event specific Field
+Field7	VarChar	Char String	255		Event Specific Field Content
+Field8Name	VarChar	Char String	20		Name of Event specific Field
+Field8	VarChar	Char String	255		Event Specific Field Content
+Field9Name	VarChar	Char String	20		Name of Event specific Field
+Field9	VarChar	Char String	255		Event Specific Field Content
+Field10Name	VarChar	Char String	20		Name of Event specific Field
+Field10	VarChar	Char String	255		Event Specific Field Content
+Field11Name	VarChar	Char String	20		Name of Event specific Field
+Field11	VarChar	Char String	255		Event Specific Field Content
+Field12Name	VarChar	Char String	20		Name of Event specific Field
+Field12	VarChar	Char String	255		Event Specific Field Content
+Field13Name	VarChar	Char String	20		Name of Event specific Field
+Field13	VarChar	Char String	255		Event Specific Field Content
+Field14Name	VarChar	Char String	20		Name of Event specific Field
+Field14	VarChar	Char String	255		Event Specific Field Content
+Field15Name	VarChar	Char String	20		Name of Event specific Field
+Field15	VarChar	Char String	255		Event Specific Field Content
+Field16Name	VarChar	Char String	20		Name of Event specific Field
+Field16	VarChar	Char String	255		Event Specific Field Content
+Field17Name	VarChar	Char String	20		Name of Event specific Field
+Field17	VarChar	Char String	255		Event Specific Field Content
+Field18Name	VarChar	Char String	20		Name of Event specific Field
+Field18	VarChar	Char String	255		Event Specific Field Content
+Field19Name	VarChar	Char String	20		Name of Event specific Field
+Field19	VarChar	Char String	255		Event Specific Field Content
+Field20Name	VarChar	Char String	20		Name of Event specific Field
+Field20	VarChar	Char String	255		Event Specific Field Content
+Field21Name	VarChar	Char String	20		Name of Event specific Field
+Field21	VarChar	Char String	255		Event Specific Field Content
+Field22Name	VarChar	Char String	20		Name of Event specific Field
+Field22	VarChar	Char String	255		Event Specific Field Content
+Field23Name	VarChar	Char String	20		Name of Event specific Field
+Field23	VarChar	Char String	255		Event Specific Field Content
+Field24Name	VarChar	Char String	20		Name of Event specific Field
+Field24	VarChar	Char String	255		Event Specific Field Content
+
+
+Event specific variations.
+
+
+Announcement - (ANN)
+
+Date 1 - NotificationDate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+Extra Fields : None
+
+
+Arrangement - (ARR)
+
+Date 1 - Exdate
+Date 2 - Recdate
+Date 3 - Paydate
+
+Option and Serial ID : Dummies
+Outurns: Successor code
+
+Ratios: None
+Rates: None
+Priority: Applicable
+Extra Fields : None
+
+
+Assimilation - (ASSM)
+
+Date 1 - AssimilationDate
+
+Option and Serial ID : Dummy 1's
+Outurns: Resultant code
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+Extra Fields : None
+
+
+Buy Back - (BB)
+
+Date 1 - Start date
+Date 2 - End date
+Date 2 - Recdate
+Date 3 - Paydate
+Date 5 - Withdrawal fromdate
+Date 6 - Withdrawal Todate
+
+Option and Serial ID : Real but usually only one Option and Serial ID
+Outurns: Resultant code
+
+Ratios: Yes
+Rates: Minprice, Maxprice
+Decimals as above in general spec
+
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+OnOffFlag	Char	Char String	1	ONOFFFLAG	The mechanism adopted by the company for buying back the shares.  
+WithdrawalRights	Char	Char String	1	BOOLEAN	The mechanism adopted by the company for buying back the shares.  
+
+
+Bankruptcy - (BKRP)
+
+Date 1 - Notification date
+Date 2 - Filing date
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : None
+
+
+Bonus Issue - (BON)
+
+Date 1 - Exdate
+Date 2 - Recdate
+Date 3 - Paydate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: Yes
+Decimals as above in general spec
+
+Rates: None
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+ResSectyCD	Char	Char String	3	SECTYPE	Resultant Security Type
+LapsedPremium	Decimal	14.5	14		This field is populated for ADR holders only. If the underlying security is having Bonus issue and company decides ADR shares will not have bonus. The company will sell the share on behalf of ADR holders in the market and return the money to ADR holders. So there is no ratio.
+
+
+Bonus Rights - (BR)
+
+Date 1 - StartSubscription
+Date 2 - EndSubscription
+Date 3 - SplitDate
+Date 4 - StartTrade
+Date 5 - EndTrade
+Date 6 - ExDate
+Date 7 - RecDate
+Date 8 - PayDate
+
+Option and Serial ID : Dummies
+Outurns: Resultant (Note also Trading and Poison Pill in extra fields section)
+
+Ratios: Yes
+Rates: IssuePrice
+Decimals as above in general spec
+
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+TraSecID	Integer	32 bit	10		WCA Security Code of the security that may be created for Trading purposes.
+TraIsin	Char	Char String	12		Trading ISIN if applicable/available
+OverSubscription	Char	Char String	1	BOOLEAN	
+ResSectyCD	Char	Char String	3	SECTYPE	Resultant Security Type
+
+
+Call - (CALL)
+
+Date 1 - DueDate
+Date 2 - RecDate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: None
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+CallNumber	Integer	32 bit	10		Number of the call which the company has made on the security. Eg.  1st Call, 2nd Call, 3rd Call
+CurenCD	Char	Char String	3	CUREN	ISO Currency Code
+ToFacevalue	Decimal	14.5	14		Out of the total call amount the amount that will be apportioned to the Face Value of the security i.e. company’s equity capital.
+ToPremium	Decimal	14.5	14		Out of the total call amount the amount that will be apportioned to the share premium account.
+
+
+Capital Reduction - (CAPRD)
+
+Date 1 - Effective date
+Date 2 - Recdate
+
+Option and Serial ID : Dummies
+Outurns: Successor code
+
+Ratios: Yes
+Decimals as above in general spec
+
+Rates: None
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+OldParValue	Decimal	14.5	14		Par Value may change in Capital Reduction.  Both are provided for reference.
+NewParValue	Decimal	14.5	14		Par Value may change in Capital Reduction.  Both are provided for reference.
+
+
+Company Meeting - (AGM)
+
+Date 1 - AGMDate
+Date 2 - FYEDate
+Date 3 - RecDate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+AGMEGM	Char	Char String	3	AGMEGM	Type of meeting
+AGMNo	Char	Char String	10		Company meeting number
+AGMTime	VarChar	Char String	12
+Add1	VarChar	Char String	50		Address Line 1
+Add2	VarChar	Char String	50		Address Line 2
+Add3	VarChar	Char String	50		Address Line 3
+Add4	VarChar	Char String	50		Address Line 4
+Add5	VarChar	Char String	50		Address Line 5
+Add6	VarChar	Char String	50		Address Line 6
+City	VarChar	Char String	50		City
+CntryCD	Char	Char String	2	CNTRY	ISO Country
+
+
+Consolidation (AKA Reverse stock split) - (CONSD)
+
+Date 1 - Exdate
+Date 2 - Recdate
+Date 3 - Paydate
+
+Option and Serial ID : Dummies
+Outurns: Successor code
+
+Ratios: Yes
+Decimals as above in general spec
+
+Rates: None
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+OldParValue	Decimal	14.5	14		Par Value may change in Consolidation.  Both are provided for reference.
+NewParValue	Decimal	14.5	14		Par Value may change in Consolidation.  Both are provided for reference.
+CurenCD	Char	Char String	3	CUREN	ISO Currency Code
+
+
+Conversion - (CONV)
+
+Date 1 - FromDate
+Date 2 - ToDate
+Date 3 - RecDate
+
+Option and Serial ID : Dummies
+Outurns: Resultant code
+
+Ratios: Yes
+Rates: Price
+Decimals as above in general spec
+
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+MandOptFlag	Char	Char String	1	MANDOPT	Is the conversion for this period Mandatory or Optional to the shareholder.  Generally there could be several conversion periods within the life of the Preference share.  The Last one is Mandatory and all the interim ones would be optional.
+FXrate	Decimal	14.5	14		Foreign Exchange Rate
+PartFinalFlag	Char	Char String	1	PARTFINAL	
+ResSectyCD	Char	Char String	3	SECTYPE	Resultant Security Type
+ConvType	VarChar	Char String	10	CONVTYPE
+PriceAsPercent	Decimal	14.9	14
+
+
+Certificate Exchange - (CTX)
+
+Date 1 - Start date
+Date 2 - End date
+
+Option and Serial ID : Dummies
+Outurns: Resultant code
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+RelEvent	VarChar	Char String	10	TABLENAME	Event related to or causing the current event. e.g. Subdivision could be the the related event of a Sedol Change Event
+ResSectyCD	Char	Char String	3	SECTYPE	Resultant Security Type
+
+
+Currency Redenomination - (CURRD)
+
+Date 1 - EffectiveDate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+EventType	VarChar	Char String	10	EVENT	Event type code
+OldCurenCD	Char	Char String	3	CUREN	ISO Old Currency Code
+NewCurenCD	Char	Char String	3	CUREN	ISO New Currency Code
+OldParValue	Decimal	14.5	14		Par Value may change in Currency Redenomination.  Both are provided for reference.
+NewParValue	Decimal	14.5	14		Par Value may change in Currency Redenomination.  Both are provided for reference.
+
+
+Distribution - (DIST)
+
+Date 1 - Exdate
+Date 2 - Recdate
+Date 3 - Paydate
+Date 4 - WithdrawalFromdate
+Date 5 - WithdrawalTodate
+Date 6 - OptionElectionDate
+
+Option and Serial ID : OptionID real, Serial ID real
+Outurns: Resultant code
+
+Ratios: Yes
+Rates: MinPrice, MaxPrice
+Decimals as above in general spec
+
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+WithdrawalRights	Char	Char String	1	BOOLEAN	True or False
+
+
+Dividend - (DIV)
+
+Date 1 - Exdate
+Date 2 - RecDate
+Date 3 - Paydate
+Date 4 - PayDate2
+Date 5 - FYEDate
+Date 6 - PeriodEndDate
+Date 7 - OptElectionDate
+Date 8 - ToDate
+Date 9 - RegistrationDate
+Date 10 - DeclarationDate
+Date 11 - ExDate2
+Date 12 - FXDate
+
+Option and Serial ID : OptionID real, Serial ID real
+Outurns: Resultant code
+
+Ratios: Yes
+Decimals as above in general spec
+
+Rates: Gross and Net Dividend
+GrossDividend	Decimal	18.9	18		Total Dividend amount
+NetDividend	Decimal	18.9	18		Dividend net of taxes (if any) to the shareholder
+
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+Marker	Char	Char String	3	MARKER	Dividend Marker
+Frequency	Char	Char String	3	FREQ	Dividend Frequency
+Tbaflag	Char	Char String	1	BOOLEAN	The company intends to pay a dividend but the details are yet to be announced
+NilDividend	Char	Char String	1	BOOLEAN	Real Dividend event but of zero payrate.
+DivRescind	Char	Char String	1	BOOLEAN	Real Dividend event but of zero payrate.
+RecindCashDiv	Char	Char String	1	BOOLEAN	Cash Dividend Cancelled.
+RecindStockDiv	Char	Char String	1	BOOLEAN	Stock Dividend Cancelled.
+Approxflag	Char	Char String	1	BOOLEAN	If dividend is temporarily an approximate value. Expect an update.
+TaxRate	Decimal	14.5	14		Domestic withholding tax rate
+Depfees	Decimal	14.5	14		Depositary fees - Applies only to DR dividends
+Coupon	VarChar	Char String	25		In countries where coupons are to be submitted to obtain a benefit this field is useful
+Dapflag	Char	Char String	1	YNBLANK	Divdend Access Plan Available (GB only)
+InstallmentPayDate	Date	yyyy/mm/dd	10		
+DeclCurenCD	Char	Char String	3	CUREN	Declared Currency Code
+DeclGrossAmt	Varchar	Char String	20		Declared Gross Amount
+
+
+Demerger - (DMRGR)
+
+Date 1 - Exdate
+Date 2 - Recdate
+Date 3 - Paydate
+Date 4 - WithdrawalFromdate
+Date 5 - WithdrawalTodate
+Date 6 - OptionElectionDate
+Date 7 - EffectiveDate
+
+Option and Serial ID : Yes
+Outurns: Resultant code
+
+Ratios: Yes
+Rates: MinPrice, MaxPrice
+Decimals as above in general spec
+
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+WithdrawalRights	Char	Char String	1	BOOLEAN	True or False
+
+
+Dividend Reinvestment Plan - (DRIP)
+
+Date 1 - DripLastdate
+Date 2 - DripPaydate
+Date 3 - CrestDate
+Date 4 - ExDate
+
+Option and Serial ID : No
+Outurns: No
+
+Ratios: No
+Rates: No
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+DripReinvPrice	Decimal	16.7	16		Drip reinvestment price
+CntryCD	Char	Char String	2	CNTRY	ISO Country
+
+
+Divestment - (DVST)
+
+Date 1 - Exdate
+Date 2 - Recdate
+Date 3 - Paydate
+Date 4 - StartSubscription
+Date 5 - EndSubscription
+
+Option and Serial ID : None
+Outurns: Resultant code
+
+Ratios: Yes
+Rates: MinPrice, MaxPrice
+Decimals as above in general spec
+
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+ResSectyCD	Char	Char String	3	SECTYPE	Resultant Security Type
+MaxQlyQty	Integer	64 bit	11		If the quantity held by shareholder is within this range then he qualifies for taking part in the event. 
+MaxAcpQty	Integer	64 bit	11		The TOTAL Quantity the company will accept from all the shareholders tendering their shares in the event for the event to be binding on the offeror.
+TraSecID	Integer	32 bit	10		WCA Security Code of the security that may be created for Trading purposes.
+TraIsin	Char	Char String	12		Trading ISIN if applicable/available
+
+
+Entitlements - (ENT)
+
+Date 1 - Exdate
+Date 2 - Recdate
+Date 3 - Paydate
+Date 4 - StartSubscription
+Date 5 - EndSubscription
+
+Option and Serial ID : Dummies
+Outurns: Successor code
+
+Ratios: Yes
+Rates: IssuePrice
+Decimals as above in general spec
+
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+ResSectyCD	Char	Char String	3	SECTYPE	Resultant Security Type
+OverSubscription	Char	Char String	1	BOOLEAN	
+
+
+Franking - (FRANK)
+
+Date 1 - Exdate
+Date 2 - Recdate
+Date 3 - Paydate
+
+Option and Serial ID : Dummies
+Outurns: No
+
+Ratios: No
+Rates: No
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+Frankflag	Char	Char String	1	FRANKFLAG	Franking type.
+FrankDiv	Decimal	18.9	18		Franked amount if partially franked
+UnFrankDiv	Decimal	18.9	18		Unfranked amount if partially franked
+
+
+Financial Transaction Tax - (FTT)
+
+Date 1 - FTTStartDate
+Date 2 - FTTEndDate
+
+Option and Serial ID : Dummies
+Outurns: No
+
+Ratios: No
+Rates: No
+Priority: Not Applicable
+
+Extra Fields : None
+
+
+Financial Year Change - (FYCHG)
+
+Date 1 - NotificationDate
+Date 2 - OldFYStartDate
+Date 3 - OldFYEndDate
+Date 4 - NewFYStartDate
+Date 5 - NewFYEndDate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+RelEvent	VarChar	Char String	10	TABLENAME	Event related to or causing the current event. e.g. Subdivision could be the the related event of a Sedol Change Event
+
+
+International Code Change - (ICC)
+
+Date 1 - EffectiveDate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+EventType	VarChar	Char String	10	EVENT	Event type code
+OldISIN	Char	Char String	12		Old Isin
+NewISIN	Char	Char String	12		New Isin
+OldUSCode	Char	Char String	9		Old US code
+NewUSCode	Char	Char String	9		New US code
+RelEventID	Integer	32 bit	10		Link to related event if available
+
+
+Incorporation Change - (INCHG)
+
+Date 1 - EffectiveDate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+EventType	VarChar	Char String	10	EVENT	Event type code
+OldCntryCD	Char	Char String	2	CNTRY	Old ISO Country
+NewCntryCD	Char	Char String	2	CNTRY	New ISO Country
+
+
+Issuer Name Change - (ISCHG)
+
+Date 1 - EffectiveDate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+EventType	VarChar	Char String	10	EVENT	Event type code
+IssOldName	VarChar	Char String	70		Old Issuer Name
+IssNewName	VarChar	Char String	70		New Issuer Name
+LegalName	Char	Char String	1	BOOLEAN	Flagged if IssNewName is the legal name
+MeetingDateFlag	Char	Char String	1	BOOLEAN	
+
+
+Lawsuit - (LAWST)
+
+Date 1 - EffectiveDate
+Date 2 - Regdate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+LAType	Char	Char String	10		Indicates if the Lawsuit is a class action
+
+
+Local Code Change - (LCC)
+
+Date 1 - EffectiveDate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+EventType	VarChar	Char String	10	EVENT	Event type code
+OldLocalCode	VarChar	Char String	50		
+NewLocalCode	VarChar	Char String	50		
+RelEventID	Integer	32 bit	10		Link to related event if available
+
+
+Liquidation - (LIQ)
+
+Date 1 - Recdate
+Date 2 - Paydate
+Date 3 - Option Election Date
+
+Option and Serial ID : Real
+Outurns: Resultant code
+
+Ratios: Yes
+Rates: MinPrice, MaxPrice
+Decimals as above in general spec
+
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+ResSectyCD	Char	Char String	3	SECTYPE	Resultant Security Type
+Liquidator	VarChar	Char String	50		Name of the agency appointed for liquidating the assets of the company.
+LiqAdd1	VarChar	Char String	50		Address Line 1
+LiqAdd2	VarChar	Char String	50		Address Line 2
+LiqAdd3	VarChar	Char String	50		Address Line 3
+LiqAdd4	VarChar	Char String	50		Address Line 4
+LiqAdd5	VarChar	Char String	50		Address Line 5
+LiqAdd6	VarChar	Char String	50		Address Line 6
+LiqCity	VarChar	Char String	50		City
+LiqCntryCD	Char	Char String	2	CNTRY	ISO Country
+LiqTel	VarChar	Char String	50		Phone
+LiqFax	VarChar	Char String	50		Fax
+LiqEmail	VarChar	Char String	50		Email
+
+
+Listing Status Change - (LSTAT)
+
+Date 1 - EffectiveDate
+Date 2 - NotificationDate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+EventType	VarChar	Char String	10	EVENT	Event type code
+OldLStatStatus	Char	Char String	1	LISTSTAT	Old Listing Status
+LStatStatus	Char	Char String	1	LISTSTAT	New Listing Status
+
+Lot Change - (LTCHG)
+
+Date 1 - EffectiveDate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+EventType	VarChar	Char String	10	EVENT	Event type code
+OldLot	Integer	32 bit	10		Old lot size
+OldMinTrdQty	Integer	32 bit	10		Old Minimum Trading Quantity
+NewLot	Integer	32 bit	10		New lot size
+NewMinTrdgQty	Integer	32 bit	10		New Minimum Trading Quantity
+
+
+Market Segment Change - (MKCHG)
+
+Date 1 - EffectiveDate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: No
+
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+EventType	VarChar	Char String	10	EVENT	Event type code
+OldMIC	Char	Char String	6
+NewMIC	Char	Char String	6
+OldMktsegment	Int	32 bit	11
+NewMktsegment	Int	32 bit	11
+
+
+Merger - (MRGR)
+
+Date 1 - Exdate
+Date 2 - Recdate
+Date 3 - Paydate
+Date 4 - AppointedDate
+Date 5 - EffectiveDate
+Date 6 - WithdrawalFromdate
+Date 7 - WithdrawalTodate
+Date 8 - OptionElectionDate
+
+Option and Serial ID : Real
+Outurns: Resultant code
+
+Ratios: Yes
+Rates: MinPrice, MaxPrice
+Decimals as above in general spec
+
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+MrgrStatus	Char	Char String	1	MRGRSTAT	Progress of the Merger
+WithdrawalRights	Char	Char String	1	BOOLEAN	True or False
+
+
+New Listing - (NLIST)
+
+Date 1 - EffectiveDate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : None
+
+
+Odd Lot Offer - (ODDLT)
+
+Date 1 - StartDate
+Date 2 - EndDate
+Date 3 - Recdate
+Date 4 - Paydate
+Date 5 - Withdrawalfromdate
+Date 6 - Withdrawaltodate
+Date 7 - OptElectionDate
+
+Option and Serial ID : OptionID real, Serial ID real
+Outurns: Resultant code
+
+Ratios: Yes
+Rates: MinPrice, MaxPrice
+Decimals as above in general spec
+
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+MinQlyQty	Integer	64 bit	11		If the quantity held by shareholder is within this range then he qualifies for taking part in the event. 
+MaxQlyQty	Integer	64 bit	11		If the quantity held by shareholder is within this range then he qualifies for taking part in the event. 
+WithdrawalRights	Char	Char String	1	BOOLEAN	True or False
+MinOfrQty	Integer	64 bit	11		The Quantity range within which the Shareholder can offer from his total holding in the event.
+MaxOfrQty	Integer	64 bit	11		The Quantity range within which the Shareholder can offer from his total holding in the event.
+MinAcpQty	Integer	64 bit	11		The TOTAL Quantity the company will accept from all the shareholders tendering their shares in the event for the event to be binding on the offeror.
+MaxAcpQty	Integer	64 bit	11		The TOTAL Quantity the company will accept from all the shareholders tendering their shares in the event for the event to be binding on the offeror.
+BuyIn	Char	Char String	1
+BuyInCurenCD	Char	Char String	3
+BuyInPrice	Varchar	Char String	20
+
+
+Property Income Distribution - (PID)
+
+Date 1 - Exdate
+Date 2 - Recdate
+Date 3 - Paydate
+
+Option and Serial ID : Dummies
+Outurns: No
+
+Ratios: No
+Rates: No
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+NonPID	Decimal	18.9	18		Indicates the portion of the dividend that is not Property Income Distribution
+PID	Decimal	18.9	18		Indicates the portion of the dividend that is Property Income Distribution
+
+
+Purchase Offer - (PO)
+
+Date 1 - Exdate
+Date 2 - Recdate
+Date 3 - Paydate
+Date 4 - Offer Opens date
+Date 5 - Offer Closes date
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: MinPrice, MaxPrice
+Decimals as above in general spec
+
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+POMinPercent	Decimal	5.2	5		TOTAL Percentage of the shares outstanding that the purchaser will buy from the shareholders.
+POMaxPercent	Decimal	5.2	5		TOTAL Percentage of the shares outstanding that the purchaser will buy from the shareholders.
+MinOfrQty	Integer	64 bit	11		The Quantity range within which the Shareholder can offer from his total holding in the event.
+MaxOfrQty	Integer	64 bit	11		The Quantity range within which the Shareholder can offer from his total holding in the event.
+TndrStrkPrice	Decimal	14.5	14		If the event is via a Tender process it is the cut off price at which all the bids are  accepted.
+TndrPriceStep	Decimal	14.5	14		If the event is via a Tender then there is a price step in which one can put in the bids. Eg. If the price step specified is 10p then one has to make bids in steps of 10p i.e. GBP 1.10, GBP 1.20, GBP 1.30.
+MinQlyQty	Integer	64 bit	11		If the quantity held by shareholder is within this range then he qualifies for taking part in the event. 
+MaxQlyQty	Integer	64 bit	11		If the quantity held by shareholder is within this range then he qualifies for taking part in the event. 
+MinAcpQty	Integer	64 bit	11		The TOTAL Quantity the company will accept from all the shareholders tendering their shares in the event for the event to be binding on the offeror.
+MaxAcpQty	Integer	64 bit	11		The TOTAL Quantity the company will accept from all the shareholders tendering their shares in the event for the event to be binding on the offeror.
+SealedBid	Char	Char String	1	BOOLEAN	True if Sealed Bid
+
+
+Primary Exchange Change - (PRCHG)
+
+Date 1 - EffectiveDate
+
+Option and Serial ID : Dummies
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+EventType	VarChar	Char String	10	EVENT	Event type code
+OldExchgCD	VarChar	Char String	6	EXCHANGE	Old Primary Exchange Code
+NewExchgCD	VarChar	Char String	6	EXCHANGE	New Primary Exchange Code
+
+
+Preferential Offer - (PRF)
+
+Date 1 - Exdate
+Date 2 - Recdate
+Date 3 - Paydate
+Date 4 - Start Subscription
+Date 5 - End Subscription
+
+Option and Serial ID : Dummies
+
+Outurns: Resultant code
+
+Ratios: Yes
+Rates: MinPrice, MaxPrice
+Decimals as above in general spec
+
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+ResSectyCD	Char	Char String	3	SECTYPE	Resultant Security Type
+OffereeIssID	Integer	32 bit	10		Offeree Issuer ID
+OffereeName	VarChar	Char String	70		Name of the issuer making the offer but the issuer is not available on WCA.
+TndrStrkPrice	Decimal	14.5	14		If the event is via a Tender process it is the cut off price at which all the bids are  accepted.
+TndrPriceStep	Decimal	14.5	14		If the event is via a Tender then there is a price step in which one can put in the bids. Eg. If the price step specified is 10p then one has to make bids in steps of 10p i.e. GBP 1.10, GBP 1.20, GBP 1.30.
+MinPrice	Decimal	14.5	14		Price range within which the event would take place.
+MaxPrice	Decimal	14.5	14		Price range within which the event would take place.
+MinQlyQty	Integer	64 bit	11		If the quantity held by shareholder is within this range then he qualifies for taking part in the event. 
+MaxQlyQty	Integer	64 bit	11		If the quantity held by shareholder is within this range then he qualifies for taking part in the event. 
+MinAcpQty	Integer	64 bit	11		The TOTAL Quantity the company will accept from all the shareholders tendering their shares in the event for the event to be binding on the offeror.
+MaxAcpQty	Integer	64 bit	11		The TOTAL Quantity the company will accept from all the shareholders tendering their shares in the event for the event to be binding on the offeror.
+
+
+Parvalue Redenomination - (PVRD)
+
+Date 1 - EffectiveDate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: No
+Rates: No
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+RelEvent	VarChar	Char String	10	TABLENAME	Event related to or causing the current event. e.g. Subdivision could be the the related event of a Sedol Change Event
+PVCurrency	Char	Char String	3	CUREN	Security Parvalue Currency
+OldParValue	Decimal	14.5	14		Par Value may change in Currency Redenomination.  Both are provided for reference.
+NewParValue	Decimal	14.5	14		Par Value may change in Currency Redenomination.  Both are provided for reference.
+
+
+Return of Capital - (RCAP)
+
+Date 1 - Effective date
+Date 2 - Recdate
+Date 3 - Paydate
+
+Option and Serial ID : Dummies
+Outurns: Successor code
+
+Ratios: None
+Rates: CashBak
+Decimals as above in general spec
+
+Priority: Applicable
+
+Extra Fields : None
+
+
+Preference Redemeption - (REDEM)
+
+Date 1 - Redemption date
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+
+Rates: RedemPrice
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+MandOptFlag	Char	Char String	1	MANDOPT	Is the redemption for this date Mandatory or Optional to the bond holder.  Some securities can have several redemption dates (eg. Preference share) during the life of the security while others may just have one (eg. Bonds). 
+PartFinal	VarChar	Char String	1	PARTFINAL	Is the redemption for this date Part or Final.  Part redemptions may be mandatory.
+RedemType	Char	Char String	10	REDEMTYPE	A lookup table indicating the variety of redemptions possible.  Eg. Amortisation, Sinking fund, bullet etc.
+AmountRedeemed	Decimal	14.9	14
+RedemPremium	Decimal	14.9	14
+PriceAsPercent	Decimal	14.9	14
+PremiumAsPercent	Decimal	14.9	14
+RedemPercent	Decimal	13.9	13		Redemption in %. To allow for Redemption of security which is only on % basis.
+PoolFactor	Decimal	13.9	13		The outstanding principal balance divided by the original principal balance with the result expressed as a decimal. Useful in calculating redemption and outstanding par value.  Introduced to capture this figure whenever its available.
+
+
+Rights - (RTS)
+
+Date 1 - Exdate
+Date 2 - Recdate
+Date 3 - Paydate
+Date 4 - StartSubscription
+Date 5 - EndSubscription
+Date 6 - StartTrade
+Date 7 - EndTrade
+Date 8 - Splitdate
+Rights Split Date: Split date concept in rights is known in asian countries where the lot size is more than 1. If the shareholder is suppose to receive 100 shares because of rights and the lost size is 50 then he will receive 2 physical certificates. Split date is only for shares in physical form. If the share holders wants 10 certificates for 100 shares companies can do it and the split date is the date when this shares are split by the company.
+
+Option and Serial ID : Dummies
+Outurns: Resultant (Note also Trading and Poison Pill in extra fields section)
+
+Ratios: Yes
+Rates: IssuePrice, LapsedPremium
+Decimals as above in general spec
+
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+TraSecID	Integer	32 bit	10		WCA Security Code of the security that may be created for Trading purposes.
+TraIsin	Char	Char String	12		Trading ISIN if applicable/available
+PPSecID	Integer	32 bit	10		Poison Pill Rights: This rights behave same as normal rights but they do not trade at all. This rights are normally announced by the company to avoid hostile takeover.
+PPIsin	Char	Char String	12		PP ISIN if applicable/available
+OverSubscription	Char	Char String	1	BOOLEAN	
+ResSectyCD	Char	Char String	3	SECTYPE	Resultant Security Type
+
+
+Security Description Change - (SCCHG)
+
+Date 1 - EffectiveDate
+
+Option and Serial ID : Dummies
+Outurns: None
+
+Ratios: None
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+EventType	VarChar	Char String	10	EVENT	Event type code
+SecOldName	VarChar	Char String	70		Previous Name
+SecNewName	VarChar	Char String	70		New Name
+OldSectyCD	Char	Char String	3	SECTYPE	Old Security type code
+NewSectyCD	Char	Char String	3	SECTYPE	New Security type code
+OldRegS144A	Char	Char String	10	REGS144A	OldRegS144A Value
+NewRegS144A	Char	Char String	10	REGS144A	NewRegS144A Value
+
+
+Security Swap - (SCSWP)
+
+Date 1 - Exdate
+Date 2 - Recdate
+Date 3 - Paydate
+
+Option and Serial ID : Dummies
+Outurns: Resultant code
+
+Ratios: Yes
+Decimals as above in general spec
+
+Rates: None
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+ResSectyCD	Char	Char String	3	SECTYPE	Resultant Security Type
+
+
+Subdivision (AKA - Forward Stock Split) - (SD)
+
+Date 1 - Exdate
+Date 2 - Recdate
+Date 3 - Paydate
+
+Option and Serial ID : Dummies
+Outurns: Successor code
+
+Ratios: Yes
+Decimals as above in general spec
+
+Rates: None
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+OldParValue	Decimal	14.5	14		Par Value may change in Consolidation.  Both are provided for reference.
+NewParValue	Decimal	14.5	14		Par Value may change in Consolidation.  Both are provided for reference.
+OldCurenCD	Char	Char String	3	CUREN	ISO Old Currency Code
+NewCurenCD	Char	Char String	3	CUREN	ISO New Currency Code
+
+
+Security Reclassification - (SECRC)
+
+Date 1 - Effectivedate
+
+Option and Serial ID : Dummies
+Outurns: Resultant code
+
+Ratios: Yes
+Decimals as above in general spec
+
+Rates: None
+Priority: Not Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+RelEvent	VarChar	Char String	10	TABLENAME	Event related to or causing the current event. e.g. Subdivision could be the the related event of a Sedol Change Event
+ResSectyCD	Char	Char String	3	SECTYPE	Resultant Security Type
+
+
+Takeover - (TKOVR)
+
+Date 1 - Opendate
+Date 2 - Closedate
+Date 3 - Recdate
+Date 4 - Cmacqdate
+Date 5 - Paydate
+Date 6 - Optelectiondate
+Date 7 - Withdrawalfromdate
+Date 8 - Withdrawaltodate
+Date 9 - UnconditionalDate
+Date 10 - ToDate
+Date 11 - RegistrationDate
+
+Option and Serial ID : Real
+Outurns: Resultant code
+
+Ratios: Yes
+
+Rates: MinPrice, MaxPrice
+Decimals as above in general spec
+
+Priority: Applicable
+
+Extra Fields : Yes
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+TkovrStatus	Char	Char String	1	TKOVRSTAT	Takeover status
+OfferorIssID	Integer	32 bit	10		Internal IssID of the Offeror
+OfferorName	VarChar	Char String	70		Name of the issuer making the offer but the issuer is not available on WCA.
+Hostile	Char	Char String	1	BOOLEAN	True if hostile takeover
+MiniTkovr	Char	Char String	1	BOOLEAN	True if Mini-Takeover.
+ResSecType	Char	Char String	3	SECTYPE	Resultant Security Type
+TargetQuantity	Integer	64 bit	11		Total Quantity of shares targeted for the Takeover by the offeror
+TargetPercent	Decimal	6.2	6		Percentage of the Company¦s shares outstanding targeted by the Offeror.
+MinAcpQty	Integer	64 bit	11		The TOTAL Quantity the company will accept from all the shareholders tendering their shares in the event for the event to be binding on the offeror.
+MaxAcpQty	Integer	64 bit	11		The TOTAL Quantity the company will accept from all the shareholders tendering their shares in the event for the event to be binding on the offeror.
+PreOfferQty	Integer	64 bit	11		Number of shares held by the Offeror prior to making the Takeover offer
+PreOfferPercent	Decimal	6.2	6		Percentage of the Company¦s shares outstanding that the Offeror held prior to making the Takeover offer
+TndrStrkPrice	Decimal	14.5	14		If the event is via a Tender process it is the cut off price at which all the bids are  accepted.
+TndrPriceStep	Decimal	14.5	14		If the event is via a Tender then there is a price step in which one can put in the bids.   Eg.  If the price step specified is 10p then one has to make bids in steps of 10p i.e. GBP 1.10, GBP 1.20, GBP 1.30.
+MinQlyQty	Integer	64 bit	11		If the quantity held by shareholder is within this range then he qualifies for taking part in the event. 
+MaxQlyQty	Integer	64 bit	11		If the quantity held by shareholder is within this range then he qualifies for taking part in the event. 
+MinOfrQty	Integer	64 bit	11		The Quantity range within which the Shareholder can offer from his total holding in the event.
+MaxOfrQty	Integer	64 bit	11		The Quantity range within which the Shareholder can offer from his total holding in the event.
+DutchAuction	Char	Char String	1	BOOLEAN
+WithdrawalRights	Char	Char String	1

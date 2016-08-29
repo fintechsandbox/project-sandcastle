@@ -1,0 +1,44 @@
+WCA - Series 698 - Bloomberg version
+
+Primary Key fields
+ScexhID, BbcID and BbeID (marked with asterisks below) are the primary unique key for any given file.
+
+This data definition is identical to the block of fields in the 690 feed format starting from fields 5-26
+Its purpose is twofold:
+1. To provide full reference data seed file, global or filtered, on values or a portfolio.
+2. To keep client fully aligned on a day to day basis with changes made to EDI main reference tables which are not necessarily fed through on the reference block of the 680 corporate actions records.
+
+Element Name	DataType	Format	Max Width	Lookup TypeGroup	Field Description
+*ScexhID	Integer	32 bit	10		Unique global level Listing ID
+*BbcID	Integer	32 bit	10		EDI Internal unique ID for Bloomberg Composite Codes
+*BbeID	Integer	32 bit	10		EDI Internal unique ID for Bloomberg Exchange Codes
+Actflag	Char	Char String	1	ACTION	Event Level Action Status
+Changed	Date	yyyy/mm/dd hh:mm:ss	19		Date event updated.
+Created	Date	yyyy/mm/dd	10		Date event first entered
+SecID	Integer	32 bit	10		Unique global level Security ID (can be used to link all multiple listings together
+IssID	Integer	32 bit	10		Unique global level Issuer ID (can be used to link all securities of a company togther)
+ISIN	Char	Char String	12		ISIN code (global level identifier)
+USCode	Char	Char String	9		USCode (global level identifier)
+IssuerName	VarChar	Char String	70		Name of Issuer
+CntryofIncorp	Char	Char String	2	CNTRY	ISO Country of Incorporation of Issuer
+SIC	VarChar	Char String	10		Standard Industrial Classification Code
+CIK	VarChar	Char String	10		Central Index Key
+IndusID	Integer	32 bit	10	INDUS	EDI Proprietary Industry Sector Code
+SectyCD	Char	Char String	3	SECTYPE	Type of Equity Instrument
+SecurityDesc	VarChar	Char String	70		Security Description	
+ParValue	Decimal	14.5	14		Security Parvalue	
+PVCurrency	Char	Char String	3	CUREN	Security Parvalue Currency	
+StatusFlag	Char	Char String	1	SECSTATUS	Inactive at the global level else security is active. Not to be confused with delisted which is inactive at the exchange level	
+PrimaryExchgCD	Char	Char String	6	EXCHANGE	Exchange code for the primary listing (empty if unknown)	
+BbgCurrency	Char	Char String	3	CUREN	Bloomberg Trading Currency
+BbgCompositeGlobalID	Char	Char String	12		Bloomberg composite global ID
+BbgCompositeTicker	VarChar	Char String	40		Bloomberg composite ticker
+BbgGlobalID	Char	Char String	12		Bloomberg global ID
+BbgExchangeTicker	VarChar	Char String	40		Bloomberg exchange ticker
+StructCD	VarChar	Char String	10		
+ExchgCntry	Char	Char String	2	CNTRY	Country of Exchange where listed	
+ExchgCD	Char	Char String	6	EXCHANGE	EDI maintained Exchange code. Equivalent to the MIC code but necessary as MIC might not be available in a timely fashion.	
+Mic	Char	Char String	4	MICCODE	ISO standard Market Identification Code	
+Micseg	Char	Char String	4	MICCODE	ISO standard Market Identification Code	
+LocalCode	VarChar	Char String	50		Local code unique at Market level - a ticker or number	
+ListStatus	Char	Char String	1	LISTSTAT	Indicates whether a security is Listed on an Exchange or Unlisted Indicates Exchange Listing Status	
