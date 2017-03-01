@@ -2,7 +2,7 @@
 
 We're using Yodlee Interactive's Aggregation API. It comes in both SOAP and REST API formats. We use REST. See their [REST Quick Start Guide](https://developer.yodlee.com/Aggregation_API/Aggregation_Quickstart/Aggregation_REST_Quick_Start_Guide).
 
-I'd suggest signing up for a free 3month Yodlee trial, this is their "Sandbox" environment. Do not confuse this with the product being offered through Fintech Sandbox. This is particularly useful because of it gives you access to the
+I'd suggest signing up for a free 3month Yodlee trial, this is their "Sandbox" environment. Do not confuse this with the product being offered through FinTech Sandbox. This is particularly useful because of it gives you access to the
 'TestDrive' GUI. This allows you to access all their API functions and visually examine the data returned before writing code. See [https://developer.yodlee.com/TestDrive](https://developer.yodlee.com/TestDrive).
 
 Yodlee is different from market-data datasets in that there isn't necessarily a limit to the data you can retrieve. It is only limited by the actual accounts that a user has.
