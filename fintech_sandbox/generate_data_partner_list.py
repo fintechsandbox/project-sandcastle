@@ -255,9 +255,11 @@ def create_profile(profile, profile_category=None):
     
 if __name__ == "__main__":
     
-    BOOTSTRAP = True
-    REFRESH_TABLE_OF_CONTENTS = True
+    BOOTSTRAP = False
+    REFRESH_TABLE_OF_CONTENTS = False
     CREATE_PROFILES = False
+    CREATE_REPO_FOLDERS = False
+    
     if BOOTSTRAP:
         print "Loading content from FinTech Sandbox Website"
 
@@ -284,3 +286,12 @@ if __name__ == "__main__":
 
         for _, profile in providers:
             create_profile(profile, profile_category= 'Data-Providers')
+
+    if CREATE_REPO_FOLDERS:
+        template_dir = '/home/closedloop/GitHub/consulting/fintech-sandbox-curation/data_providers/__PROVIDER_TEMPLATE__'
+        dest_dir = '/home/closedloop/GitHub/consulting/fintech-sandbox-curation/data_providers/'
+        import shutil
+        for _, provider in providers.iterrows():
+            provider_id = provider['id']
+            shutil.copytree(template_dir, dest_dir + provider_id)
+    
