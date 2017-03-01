@@ -23,7 +23,8 @@ Examples:
  * `SIX Financial Information` -> `six_financial_information`
  * `Morningstar, Inc.` -> `morningstar_inc`
 
- Example Code implementing the above naming convention
+Example Code implementing the above naming convention:
+
 ```python
 def naming_convention(full_name):
   import re
