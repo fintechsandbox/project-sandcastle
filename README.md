@@ -8,7 +8,6 @@ effective adoption of a variety of financial data services.
 # Project Sandcastle
 http://www.fintechsandbox.org
 
-
 This resource is organized into the following sections:
 
 * **Wiki**
@@ -19,20 +18,20 @@ This resource is organized into the following sections:
     * Submit and view reviews for each data provider
     * View Product Descriptions and Features
       * Attach relevant **documentation** and **marketing materials**
- * **Code Base**
-   * [Data Provider Code Base](./data_providers)
-     * Each Data provider folder has three sub-folders:
-       * **API​**: Documentation that references product descriptions in the Wiki
-       * **Issues​**: Solutions to known bugs and references to solutions on StackOverflow
-       * **Integrations​**: Solutions to convert external data sources into useful formats for databases, visualizations, etc...
-   * [Member's Sandbox](./member_sandbox)
-     * A collection of data-provider-agnostic solutions to pressing problems for members in the Sandbox Community
-     * Be creative and collaborative here!
-   * [FinTech Sandbox Scripts](./fintech_sandbox)
-     * Code required to generate specific subsets of this [codebase](https://github.com/closedLoop/fintech-sandbox-curation) and [Wiki](https://github.com/closedLoop/fintech-sandbox-curation/wiki)
- * **Slack**
-   * Some problems we face in launching a startup require **communication, not code**.  For this we have Slack: [FinTechSandbox.slack.com](https://fintechsandbox.slack.com)
-   * Go there to share your company updates, ask for help and help another entrepreneur / data-geek out.
+* **Code Base**
+  * [Data Provider Code Base](./data_providers)
+    * Each Data provider folder has three sub-folders:
+      * **API​**: Documentation that references product descriptions in the Wiki
+      * **Issues​**: Solutions to known bugs and references to solutions on StackOverflow
+      * **Integrations​**: Solutions to convert external data sources into useful formats for databases, visualizations, etc...
+  * [Member's Sandbox](./member_sandbox)
+    * A collection of data-provider-agnostic solutions to pressing problems for members in the Sandbox Community
+    * Be creative and collaborative here!
+  * [FinTech Sandbox Scripts](./fintech_sandbox)
+    * Code required to generate specific subsets of this [codebase](https://github.com/closedLoop/fintech-sandbox-curation) and [Wiki](https://github.com/closedLoop/fintech-sandbox-curation/wiki)
+* **Slack**
+  * Some problems we face in launching a startup require **communication, not code**.  For this we have Slack: [FinTechSandbox.slack.com](https://fintechsandbox.slack.com)
+  * Go there to share your company updates, ask for help and help another entrepreneur / data-geek out.
 
 ## Contribution Guidelines
  - There is a lot of good resources here and the FinTech Sandbox team is working hard to create a great environment for you all to succeed.
