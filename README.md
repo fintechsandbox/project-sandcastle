@@ -1,13 +1,46 @@
-# Project Sandcastle
-Git tracked listing of data sources and descriptions designed to facilitate financial data retrieval by documenting the data sets available through the Fintech Sandbox to include provider information, ingest scripts, and example data. See http://www.fintechsandbox.org for more information. 
+FinTech Sandbox Members Only
+============================
+This repository and the associated Wiki are to be used only by active members of the FinTech Sandbox Community.
+We are calling this resource **Project Sandcastle**, and we have designed it to facilitate the quick and
+effective adoption of a variety of financial data services.
 
-## Contribution Guidelines 
-Contributions should detail any/some/all of the following items:
-  - Which data sets you're currently using and how you're accessing them
-  - How you're using said data sets
-  - General experience with the data set and tips to facilitate the process for new startups
-  - Addition of example data sets or ingest scripts that you found helpful
-  - Some folks have had success purely working from the provider's documentation. If there was any documentation you found particularly helpful, either link it, or add it to the repo. 
-  
-## Contact
-Feel free to post any issues/comments/requests as issues in this repository (please tag the relevant parties), on the Fintech Sandbox slack channel, or to ping any of the involved companies at their sandbox@\<company\> email address. 
+# Project Sandcastle
+http://www.fintechsandbox.org
+
+
+This resource is organized into the following sections:
+
+* **Wiki**
+  * [Member List]()
+    * Contains a page for each Current Sandbox Member and Alumnus in order to maintain appropriate contact information
+  * [Provider List]()*
+    * Go here to **request introductions** to data providers
+    * Submit and view reviews for each data provider
+    * View Product Descriptions and Features
+      * Attach relevant **documentation** and **marketing materials**
+ * **Code Base**
+   * [Data Provider Code Base]()
+     * Each Data provider folder has three sub-folders:
+       * **API​**: Documentation that references product descriptions in the Wiki
+       * **Issues​**: Solutions to known bugs and references to solutions on StackOverflow
+       * **Integrations​**: Solutions to convert external data sources into useful formats for databases, visualizations, etc...
+   * [Member Solutions]()
+     * A collection of data-provider-agnostic solutions to pressing problems for members in the Sandbox Community
+     * Be creative and collaborative here!
+   * [FinTech Sandbox Scripts]()
+     * Code required to generate specific subsets of this codebase and wiki
+ * **Slack**
+   * Some problems we face in launching a startup require **communication, not code**.  For this we have Slack: [FinTechSandbox.slack.com](https://fintechsandbox.slack.com)
+   * Go there to share your company updates, ask for help and help another entrepreneur / data-geek out.
+
+## Contribution Guidelines
+ - There is a lot of good resources here and the FinTech Sandbox team is working hard to create a great environment for you all to succeed.
+ - Please read CONTRIBUTING.md to understand how to keep this place organized and useful to others
+
+### **TL;DR** Contributing ###
+ 1. Keep reviews and descriptions of data providers in the Wiki
+ 1. Keep contact information for your company up-to-date in the Wiki
+ 1. Code should be moderately documented and minimally functional with a clear description of the problem it is trying to address
+ 1. All programming languages are welcome
+ 1. Programs that rely on multiple files should be placed in their own sub-folder
+ 1. Follow the templates provided:  New Member, New Data Provider (Wiki), New Data Provider (Codebase)
