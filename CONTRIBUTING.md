@@ -19,3 +19,9 @@ Contributions should detail any/some/all of the following items:
 
 ## Contact
 Feel free to post any issues/comments/requests as issues in this repository (please tag the relevant parties), on the FinTech Sandbox slack channel, or to ping any of the involved companies at their sandbox@\<company\> email address.
+
+
+## Large Files
+We are utilizing **Git-LFS** (Large File Service) to ensure that when we upload pdfs and documentation that the repo remains lightweight and usable for all
+
+Read more here: [https://git-lfs.github.com/](https://git-lfs.github.com/)
