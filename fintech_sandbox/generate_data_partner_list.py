@@ -199,6 +199,23 @@ def bootstrap_partners():
         raise ValueError, "url: {} - is not available".format(url)
     
 
+def _is_nan(v):
+    import numpy as np
+    if v is None:
+        return True
+    else:
+        try:
+            return np.isnan(v)
+        except:
+            return False
+
+def _process_template(template_string, data):   
+    try:
+        props = { k:v for k,v in data.to_dict().items() if not _is_nan(v) }
+        return template_string.format(**props)
+    except KeyError:
+        return ''   
+
 def create_markup_table(df, profile_category):
     """Given a DataFrame where each row is an entity, and each column is a field
     map the fields to text in columns in the table"""
@@ -219,23 +236,9 @@ def create_markup_table(df, profile_category):
                 '[![{twitter}](images/icons/twitter.png)]({twitter})'
     ]
     
-    def _is_nan(v):
-        import numpy as np
-        if v is None:
-            return True
-        else:
-            try:
-                return np.isnan(v)
-            except:
-                return False
+
     
-    def _process_template(template_string, data):
-        
-        try:
-            props = { k:v for k,v in data.to_dict().items() if not _is_nan(v) }
-            return t.format(**props)
-        except KeyError:
-            return ''        
+     
     
     table = ['| ' + ' | '.join(headings) +' |']
     table.append('|' + '|'.join(['-'*len(h) for h in headings]) +'|')
@@ -249,8 +252,46 @@ def create_markup_table(df, profile_category):
         fh.writelines(markup)
     
 def create_profile(profile, profile_category=None):
+    import shutil
+    
     assert profile_category in ['Sandbox-Members','Data-Providers'], "profile_category must be either 'Sandbox-Members' or 'Data-Providers'"
-    raise NotImplementedError
+    if profile_category  == 'Sandbox-Members':
+        template_file = WIKI_REPO_DIR + 'member_template.md'
+        profile_id = profile['id']
+        dest_file = WIKI_REPO_DIR + profile_id + '.md'
+
+    elif profile_category  == 'Data-Providers':
+        
+        template_file = WIKI_REPO_DIR + 'provider_template.md'
+        profile_id = profile['id']
+        dest_file = WIKI_REPO_DIR + profile_id + '.md'
+        
+    shutil.copy(template_file, dest_file)
+    with open(dest_file, 'r') as fh:
+        body = fh.read()
+    
+    # reformat necessary columns
+    data = profile.copy().to_dict()
+    if 'email_text' in data:
+        data['email'] = data['email_text']
+    if 'phone_text' in data:
+        data['phone'] = data['phone_text']
+    if 'title' in data:
+        data['description'] = data['title']
+    
+    if profile_category  == 'Data-Providers':
+        data['sandbox_website'] = 'http://fintechsandbox.org' + data['link']
+    
+    data = { k:v for k,v in data.items() if not _is_nan(v) }       
+
+    for k,v in data.items():
+        body = body.replace('{{ {} }}'.format(k), str(v),100).replace('{{{}}}'.format(k), str(v),100)
+        
+    with open(dest_file, 'w') as fh:
+        fh.write(body)
+    return True
+    
+        
     
     
 if __name__ == "__main__":
@@ -265,11 +306,13 @@ if __name__ == "__main__":
 
         print "Loading members"
         members = bootstrap_members()
+        members = members.sort_values('id')
         members.to_csv(WIKI_REPO_DIR + 'members.csv', encoding='utf-8')
         print "{} members info are loaded".format(len(members))
 
         print "Loading Providers"
         providers = bootstrap_partners()
+        providers = providers.sort_values('id')
         providers.to_csv(WIKI_REPO_DIR + 'providers.csv', encoding='utf-8')
         print "{} providers info are loaded".format(len(providers))
     else:
@@ -281,10 +324,10 @@ if __name__ == "__main__":
         create_markup_table(providers, profile_category = 'Data-Providers')
     
     if CREATE_PROFILES:
-        for _, profile in members:
+        for _, profile in members.iterrows():
             create_profile(profile, profile_category= 'Sandbox-Members')
 
-        for _, profile in providers:
+        for _, profile in providers.iterrows():
             create_profile(profile, profile_category= 'Data-Providers')
 
     if CREATE_REPO_FOLDERS:
