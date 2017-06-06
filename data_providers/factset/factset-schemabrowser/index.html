@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Factset sample feed browser</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">FinTech Sandbox - Factset feed browser</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <h3></h3>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Factset meta data ... or click search to list all tables" id="searchTxt">
+            <span class="input-group-addon btn btn-primary" onclick="search(document.getElementById('searchTxt').value)">Search</span>
+        </div>
+        <div class="error" id="no-web-server"> </div>
+    </div>
+</div>
+
+<div class="container" id="results">
+
+    <!--<div class="row">-->
+
+        <!--<div class="col-sm-12">-->
+            <!--<h4>Heading</h4>-->
+            <!--<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>-->
+            <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+                <!--<div class="col-sm-4"><b>feedName:</b> 'Some FieldName'</div>-->
+                <!--<div class="col-sm-4"><b>bundle:</b> 'A simple bundle '</div>-->
+                <!--<div class="col-sm-4"><b>location:</b> '/some/where/here'</div>-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--</div>-->
+
+    <!--</div>-->
+
+
+    <br>
+    <hr>
+
+    <footer>
+        <p>© 2015 Datavore Labs Inc.</p>
+    </footer>
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
+
+<script src="data/schema.json"></script>
+
+<script>
+    if(!schema)
+    {
+        document.getElementById('no-web-server').value = 'You need to open the page from a Web Root <br> try python -m SimpleHTTPServer 8000';
+    }
+
+    var search = function(searchTxt)
+    {
+
+        console.log(JSON.stringify(schema[0]));
+        searchTxt = searchTxt.toLowerCase();
+
+        var results = _.filter(schema, function(table)
+        {
+            return table.tableDescription.search(searchTxt) > -1 || table.tableName.search(searchTxt) > -1;
+        });
+
+        var output = _.map(results, function(table)
+        {
+            var res = '<div class="row"> ';
+            res += '<div class="col-sm-12">';
+            res += '<h4>'+ table.tableName +'</h4> ';
+            res += '<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p> ';
+            res += '</div>';
+
+//            res += '<div class="row">';
+            res += '    <div class="col-sm-4"><b>feedName:</b> '+ table.bundle.feedName + '</div>';
+            res += '    <div class="col-sm-4"><b>bundle:</b> ' + table.bundle.bundlePrefix + '</div>';
+            res += '    <div class="col-sm-4"><b>location:</b> ' +table.bundle.directory + '</div>';
+//            res += '</div>';
+
+            res += '</div>';
+            res += '<hr/>';
+
+            return res;
+        });
+
+        var matches = '<h3><small> Matches </small> ' + output.length + ' <small> tables.</small></h3> <hr>'
+
+        document.getElementById('results').innerHTML = matches + output.join('<br>');
+
+    };
+
+
+</script>
+
+</body>
+
+</html>
