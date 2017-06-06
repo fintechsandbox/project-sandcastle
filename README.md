@@ -46,3 +46,7 @@ This resource is organized into the following sections:
  1. Follow the templates provided:  
    1. Wiki:  [New Member](https://github.com/closedLoop/fintech-sandbox-curation/wiki/member_template), [New Data Provider](https://github.com/closedLoop/fintech-sandbox-curation/wiki/provider_template)
    1. Code Base: [New Data Provider](./data_providers/__PROVIDER_TEMPLATE__)
+ 
+ ### Note to developers
+ This repo uses Git Large File System: ``git lfs`` so that it more effectively handles large documentation files.  You may have trouble cloning this repo unless you install it.  Look for instructions here:  [https://git-lfs.github.com/](https://git-lfs.github.com/)
+ 
