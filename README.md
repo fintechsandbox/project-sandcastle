@@ -11,9 +11,9 @@ http://www.fintechsandbox.org
 This resource is organized into the following sections:
 
 * **Wiki**
-  * [Sandbox Members](https://github.com/closedLoop/fintech-sandbox-curation/wiki/Sandbox-Members)
+  * [Sandbox Members](https://github.com/fintechsandbox/project-sandcastle/wiki/Sandbox-Participants)
     * Contains a page for each Current Sandbox Member and Alumnus in order to maintain appropriate contact information
-  * [Data Providers](https://github.com/closedLoop/fintech-sandbox-curation/wiki/Data-Providers)
+  * [Data Providers](https://github.com/fintechsandbox/project-sandcastle/wiki/Data-Providers)
     * Go here to **request introductions** to data providers
     * Submit and view reviews for each data provider
     * View Product Descriptions and Features
@@ -28,7 +28,7 @@ This resource is organized into the following sections:
     * A collection of data-provider-agnostic solutions to pressing problems for members in the Sandbox Community
     * Be creative and collaborative here!
   * [FinTech Sandbox Scripts](./fintech_sandbox)
-    * Code required to generate specific subsets of this [codebase](https://github.com/closedLoop/fintech-sandbox-curation) and [Wiki](https://github.com/closedLoop/fintech-sandbox-curation/wiki)
+    * Code required to generate specific subsets of this [codebase](https://github.com/fintechsandbox/project-sandcastle/tree/master/data_providers) and [Wiki](https://github.com/fintechsandbox/project-sandcastle/wiki)
 * **Slack**
   * Some problems we face in launching a startup require **communication, not code**.  For this we have Slack: [FinTechSandbox.slack.com](https://fintechsandbox.slack.com)
   * Go there to share your company updates, ask for help and help another entrepreneur / data-geek out.
