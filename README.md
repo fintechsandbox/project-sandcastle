@@ -44,7 +44,7 @@ This resource is organized into the following sections:
  1. All programming languages are welcome
  1. Programs that rely on multiple files should be placed in their own sub-folder
  1. Follow the templates provided:  
-   1. Wiki:  [New Participant](https://github.com/fintechsandbox/project-sandcastle/wiki/member_template), [New Data Provider](https://github.com/fintechsandbox/project-sandcastle/wiki/provider_template)
+   1. Wiki:  [New Participant](https://github.com/fintechsandbox/project-sandcastle/wiki/participant_template), [New Data Provider](https://github.com/fintechsandbox/project-sandcastle/wiki/provider_template)
    1. Code Base: [New Data Provider](./data_providers/__PROVIDER_TEMPLATE__)
  
  ### Note to developers
